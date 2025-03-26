@@ -1,0 +1,461 @@
+@use 'figma' as *;
+
+:root {
+  // 인덱스
+  --z-index-header: 100;
+  --z-index-select: 500;
+  --z-index-selectbox: 500;
+  --z-index-toast: 7000;
+  --z-index-modal: 1000;
+  --z-index-dialog: 5000;
+
+  --z-index-custom-multiple: 500;
+  --z-index-model-prompt: 1000;
+  --z-index-image-detail: 1000;
+  --z-index-text-wizard: 1000;
+  --z-index-image-wizard: 1000;
+  --z-index-variation-preset: 1000;
+  --z-index-pose-preset: 1000;
+  --z-index-on-boarding: 3000;
+  --z-index-confirm-dialog: 5000;
+  --z-index-input-dialog: 5000;
+  --z-index-image-preview: 6000;
+  --z-index-tooltip-text: 6000;
+  --z-index-information-text: 6000;
+  --z-index-block-screen: 10000;
+  --z-index-loading-screen: 10000;
+
+  --animation-duration: 400ms;
+
+  --Radius-Small: #{$radius-small};
+  --Radius-Medium: #{$radius-medium};
+  --Radius-Large: #{$radius-large};
+  --Radius-Round: #{$radius-round};
+  --Radius-XSmall: #{$radius-xsmall};
+  --Radius-XLarge: #{$radius-xlarge};
+  --Radius-XXLarge: #{$radius-xxlarge};
+
+  --Colors-Blue-100: light-dark(
+    #{$light-colors-blue-100},
+    #{$dark-colors-blue-100}
+  );
+  --Colors-Blue-200: light-dark(
+    #{$light-colors-blue-200},
+    #{$dark-colors-blue-200}
+  );
+  --Colors-Blue-25: light-dark(
+    #{$light-colors-blue-25},
+    #{$dark-colors-blue-25}
+  );
+  --Colors-Blue-300: light-dark(
+    #{$light-colors-blue-300},
+    #{$dark-colors-blue-300}
+  );
+  --Colors-Blue-400: light-dark(
+    #{$light-colors-blue-400},
+    #{$dark-colors-blue-400}
+  );
+  --Colors-Blue-50: light-dark(
+    #{$light-colors-blue-50},
+    #{$dark-colors-blue-50}
+  );
+  --Colors-Blue-500: light-dark(
+    #{$light-colors-blue-500},
+    #{$dark-colors-blue-500}
+  );
+  --Colors-Blue-600: light-dark(
+    #{$light-colors-blue-600},
+    #{$dark-colors-blue-600}
+  );
+  --Colors-Blue-700: light-dark(
+    #{$light-colors-blue-700},
+    #{$dark-colors-blue-700}
+  );
+  --Colors-Blue-800: light-dark(
+    #{$light-colors-blue-800},
+    #{$dark-colors-blue-800}
+  );
+  --Colors-Blue-900: light-dark(
+    #{$light-colors-blue-900},
+    #{$dark-colors-blue-900}
+  );
+  --Colors-Blue-950: light-dark(
+    #{$light-colors-blue-950},
+    #{$dark-colors-blue-950}
+  );
+  --Colors-Green-100: light-dark(
+    #{$light-colors-green-100},
+    #{$dark-colors-green-100}
+  );
+  --Colors-Green-200: light-dark(
+    #{$light-colors-green-200},
+    #{$dark-colors-green-200}
+  );
+  --Colors-Green-25: light-dark(
+    #{$light-colors-green-25},
+    #{$dark-colors-green-25}
+  );
+  --Colors-Green-300: light-dark(
+    #{$light-colors-green-300},
+    #{$dark-colors-green-300}
+  );
+  --Colors-Green-400: light-dark(
+    #{$light-colors-green-400},
+    #{$dark-colors-green-400}
+  );
+  --Colors-Green-50: light-dark(
+    #{$light-colors-green-50},
+    #{$dark-colors-green-50}
+  );
+  --Colors-Green-500: light-dark(
+    #{$light-colors-green-500},
+    #{$dark-colors-green-500}
+  );
+  --Colors-Green-600: light-dark(
+    #{$light-colors-green-600},
+    #{$dark-colors-green-600}
+  );
+  --Colors-Green-700: light-dark(
+    #{$light-colors-green-700},
+    #{$dark-colors-green-700}
+  );
+  --Colors-Green-800: light-dark(
+    #{$light-colors-green-800},
+    #{$dark-colors-green-800}
+  );
+  --Colors-Green-900: light-dark(
+    #{$light-colors-green-900},
+    #{$dark-colors-green-900}
+  );
+  --Colors-Green-950: light-dark(
+    #{$light-colors-green-950},
+    #{$dark-colors-green-950}
+  );
+  --Colors-Grey-100: light-dark(
+    #{$light-colors-grey-100},
+    #{$dark-colors-grey-100}
+  );
+  --Colors-Grey-200: light-dark(
+    #{$light-colors-grey-200},
+    #{$dark-colors-grey-200}
+  );
+  --Colors-Grey-25: light-dark(
+    #{$light-colors-grey-25},
+    #{$dark-colors-grey-25}
+  );
+  --Colors-Grey-300: light-dark(
+    #{$light-colors-grey-300},
+    #{$dark-colors-grey-300}
+  );
+  --Colors-Grey-400: light-dark(
+    #{$light-colors-grey-400},
+    #{$dark-colors-grey-400}
+  );
+  --Colors-Grey-50: light-dark(
+    #{$light-colors-grey-50},
+    #{$dark-colors-grey-50}
+  );
+  --Colors-Grey-500: light-dark(
+    #{$light-colors-grey-500},
+    #{$dark-colors-grey-500}
+  );
+  --Colors-Grey-600: light-dark(
+    #{$light-colors-grey-600},
+    #{$dark-colors-grey-600}
+  );
+  --Colors-Grey-700: light-dark(
+    #{$light-colors-grey-700},
+    #{$dark-colors-grey-700}
+  );
+  --Colors-Grey-800: light-dark(
+    #{$light-colors-grey-800},
+    #{$dark-colors-grey-800}
+  );
+  --Colors-Grey-900: light-dark(
+    #{$light-colors-grey-900},
+    #{$dark-colors-grey-900}
+  );
+  --Colors-Grey-950: light-dark(
+    #{$light-colors-grey-950},
+    #{$dark-colors-grey-950}
+  );
+  --Colors-Pink-100: light-dark(
+    #{$light-colors-pink-100},
+    #{$dark-colors-pink-100}
+  );
+  --Colors-Pink-200: light-dark(
+    #{$light-colors-pink-200},
+    #{$dark-colors-pink-200}
+  );
+  --Colors-Pink-25: light-dark(
+    #{$light-colors-pink-25},
+    #{$dark-colors-pink-25}
+  );
+  --Colors-Pink-300: light-dark(
+    #{$light-colors-pink-300},
+    #{$dark-colors-pink-300}
+  );
+  --Colors-Pink-400: light-dark(
+    #{$light-colors-pink-400},
+    #{$dark-colors-pink-400}
+  );
+  --Colors-Pink-50: light-dark(
+    #{$light-colors-pink-50},
+    #{$dark-colors-pink-50}
+  );
+  --Colors-Pink-500: light-dark(
+    #{$light-colors-pink-500},
+    #{$dark-colors-pink-500}
+  );
+  --Colors-Pink-600: light-dark(
+    #{$light-colors-pink-600},
+    #{$dark-colors-pink-600}
+  );
+  --Colors-Pink-700: light-dark(
+    #{$light-colors-pink-700},
+    #{$dark-colors-pink-700}
+  );
+  --Colors-Pink-800: light-dark(
+    #{$light-colors-pink-800},
+    #{$dark-colors-pink-800}
+  );
+  --Colors-Pink-900: light-dark(
+    #{$light-colors-pink-900},
+    #{$dark-colors-pink-900}
+  );
+  --Colors-Pink-950: light-dark(
+    #{$light-colors-pink-950},
+    #{$dark-colors-pink-950}
+  );
+  --Colors-Red-100: light-dark(
+    #{$light-colors-red-100},
+    #{$dark-colors-red-100}
+  );
+  --Colors-Red-200: light-dark(
+    #{$light-colors-red-200},
+    #{$dark-colors-red-200}
+  );
+  --Colors-Red-25: light-dark(#{$light-colors-red-25}, #{$dark-colors-red-25});
+  --Colors-Red-300: light-dark(
+    #{$light-colors-red-300},
+    #{$dark-colors-red-300}
+  );
+  --Colors-Red-400: light-dark(
+    #{$light-colors-red-400},
+    #{$dark-colors-red-400}
+  );
+  --Colors-Red-50: light-dark(#{$light-colors-red-50}, #{$dark-colors-red-50});
+  --Colors-Red-500: light-dark(
+    #{$light-colors-red-500},
+    #{$dark-colors-red-500}
+  );
+  --Colors-Red-600: light-dark(
+    #{$light-colors-red-600},
+    #{$dark-colors-red-600}
+  );
+  --Colors-Red-700: light-dark(
+    #{$light-colors-red-700},
+    #{$dark-colors-red-700}
+  );
+  --Colors-Red-800: light-dark(
+    #{$light-colors-red-800},
+    #{$dark-colors-red-800}
+  );
+  --Colors-Red-900: light-dark(
+    #{$light-colors-red-900},
+    #{$dark-colors-red-900}
+  );
+  --Colors-Red-950: light-dark(
+    #{$light-colors-red-950},
+    #{$dark-colors-red-950}
+  );
+  --Colors-Yellow-100: light-dark(
+    #{$light-colors-yellow-100},
+    #{$dark-colors-yellow-100}
+  );
+  --Colors-Yellow-200: light-dark(
+    #{$light-colors-yellow-200},
+    #{$dark-colors-yellow-200}
+  );
+  --Colors-Yellow-25: light-dark(
+    #{$light-colors-yellow-25},
+    #{$dark-colors-yellow-25}
+  );
+  --Colors-Yellow-300: light-dark(
+    #{$light-colors-yellow-300},
+    #{$dark-colors-yellow-300}
+  );
+  --Colors-Yellow-400: light-dark(
+    #{$light-colors-yellow-400},
+    #{$dark-colors-yellow-400}
+  );
+  --Colors-Yellow-50: light-dark(
+    #{$light-colors-yellow-50},
+    #{$dark-colors-yellow-50}
+  );
+  --Colors-Yellow-500: light-dark(
+    #{$light-colors-yellow-500},
+    #{$dark-colors-yellow-500}
+  );
+  --Colors-Yellow-600: light-dark(
+    #{$light-colors-yellow-600},
+    #{$dark-colors-yellow-600}
+  );
+  --Colors-Yellow-700: light-dark(
+    #{$light-colors-yellow-700},
+    #{$dark-colors-yellow-700}
+  );
+  --Colors-Yellow-800: light-dark(
+    #{$light-colors-yellow-800},
+    #{$dark-colors-yellow-800}
+  );
+  --Colors-Yellow-900: light-dark(
+    #{$light-colors-yellow-900},
+    #{$dark-colors-yellow-900}
+  );
+  --Colors-Yellow-950: light-dark(
+    #{$light-colors-yellow-950},
+    #{$dark-colors-yellow-950}
+  );
+  --Dimmed-primary: light-dark(
+    #{$light-dimmed-primary},
+    #{$dark-dimmed-primary}
+  );
+  --Dimmed-secondary: light-dark(
+    #{$light-dimmed-secondary},
+    #{$dark-dimmed-secondary}
+  );
+  --Elevation-10: light-dark(#{$light-elevation-10}, #{$dark-elevation-10});
+  --Elevation-20: light-dark(#{$light-elevation-20}, #{$dark-elevation-20});
+  --Elevation-30: light-dark(#{$light-elevation-30}, #{$dark-elevation-30});
+  --Elevation-40: light-dark(#{$light-elevation-40}, #{$dark-elevation-40});
+  --Fill-Background-Primary: light-dark(
+    #{$light-fill-background-primary},
+    #{$dark-fill-background-primary}
+  );
+  --Fill-Background-Secondary: light-dark(
+    #{$light-fill-background-secondary},
+    #{$dark-fill-background-secondary}
+  );
+  --Fill-Surface-_Segment: light-dark(
+    #{$light-fill-surface-_segment},
+    #{$dark-fill-surface-_segment}
+  );
+  --Fill-Surface-Primary: light-dark(
+    #{$light-fill-surface-primary},
+    #{$dark-fill-surface-primary}
+  );
+  --Fill-Surface-Quaternary: light-dark(
+    #{$light-fill-surface-quaternary},
+    #{$dark-fill-surface-quaternary}
+  );
+  --Fill-Surface-Secondary: light-dark(
+    #{$light-fill-surface-secondary},
+    #{$dark-fill-surface-secondary}
+  );
+  --Fill-Surface-Tertiary: light-dark(
+    #{$light-fill-surface-tertiary},
+    #{$dark-fill-surface-tertiary}
+  );
+  --Fill-Surfacealpha-Primary: light-dark(
+    #{$light-fill-surfacealpha-primary},
+    #{$dark-fill-surfacealpha-primary}
+  );
+  --Fill-Surfacealpha-Quaternary: light-dark(
+    #{$light-fill-surfacealpha-quaternary},
+    #{$dark-fill-surfacealpha-quaternary}
+  );
+  --Fill-Surfacealpha-Secondary: light-dark(
+    #{$light-fill-surfacealpha-secondary},
+    #{$dark-fill-surfacealpha-secondary}
+  );
+  --Fill-Surfacealpha-Tertiary: light-dark(
+    #{$light-fill-surfacealpha-tertiary},
+    #{$dark-fill-surfacealpha-tertiary}
+  );
+  --Interaction-Disabled: light-dark(
+    #{$light-interaction-disabled},
+    #{$dark-interaction-disabled}
+  );
+  --Interaction-Surface: light-dark(
+    #{$light-interaction-surface},
+    #{$dark-interaction-surface}
+  );
+  --Invers-Black: light-dark(#{$light-invers-black}, #{$dark-invers-black});
+  --Invers-White: light-dark(#{$light-invers-white}, #{$dark-invers-white});
+  --Label-Accent: light-dark(#{$light-label-accent}, #{$dark-label-accent});
+  --Label-Primary: light-dark(#{$light-label-primary}, #{$dark-label-primary});
+  --Label-Quaternary: light-dark(
+    #{$light-label-quaternary},
+    #{$dark-label-quaternary}
+  );
+  --Label-Quinary: light-dark(#{$light-label-quinary}, #{$dark-label-quinary});
+  --Label-Secondary: light-dark(
+    #{$light-label-secondary},
+    #{$dark-label-secondary}
+  );
+  --Label-Tertiary: light-dark(
+    #{$light-label-tertiary},
+    #{$dark-label-tertiary}
+  );
+  --Line-Accent: light-dark(#{$light-line-accent}, #{$dark-line-accent});
+  --Line-Primary: light-dark(#{$light-line-primary}, #{$dark-line-primary});
+  --Line-Secondary: light-dark(
+    #{$light-line-secondary},
+    #{$dark-line-secondary}
+  );
+  --Line-Tertiary: light-dark(#{$light-line-tertiary}, #{$dark-line-tertiary});
+  --Refine-Accent: light-dark(#{$light-refine-accent}, #{$dark-refine-accent});
+  --Refine-Primary: light-dark(
+    #{$light-refine-primary},
+    #{$dark-refine-primary}
+  );
+  --Refine-Quaternary: light-dark(
+    #{$light-refine-quaternary},
+    #{$dark-refine-quaternary}
+  );
+  --Refine-Quinary: light-dark(
+    #{$light-refine-quinary},
+    #{$dark-refine-quinary}
+  );
+  --Refine-Secondary: light-dark(
+    #{$light-refine-secondary},
+    #{$dark-refine-secondary}
+  );
+  --Refine-Senary: light-dark(#{$light-refine-senary}, #{$dark-refine-senary});
+  --Refine-Septenary: light-dark(
+    #{$light-refine-septenary},
+    #{$dark-refine-septenary}
+  );
+  --Refine-Tertiary: light-dark(
+    #{$light-refine-tertiary},
+    #{$dark-refine-tertiary}
+  );
+  --Static-Black: light-dark(#{$light-static-black}, #{$dark-static-black});
+  --Static-Null: light-dark(#{$light-static-null}, #{$dark-static-null});
+  --Static-Primary: light-dark(
+    #{$light-static-primary},
+    #{$dark-static-primary}
+  );
+  --Static-Secondary: light-dark(
+    #{$light-static-secondary},
+    #{$dark-static-secondary}
+  );
+  --Static-White: light-dark(#{$light-static-white}, #{$dark-static-white});
+  --Status-Caution: light-dark(
+    #{$light-status-caution},
+    #{$dark-status-caution}
+  );
+  --Status-Negative: light-dark(
+    #{$light-status-negative},
+    #{$dark-status-negative}
+  );
+  --Status-Positive: light-dark(
+    #{$light-status-positive},
+    #{$dark-status-positive}
+  );
+
+  // TODO : 변수명을 변경해야할 것 같음(Slider 컴포넌트를 위해 임의로 생성)
+  --Color-min: light-dark(#{rgb(255, 255, 255)}, #{rgb(0, 0, 0)});
+  --Color-max: light-dark(#{rgb(0, 0, 0)}, #{rgb(255, 255, 255)});
+}

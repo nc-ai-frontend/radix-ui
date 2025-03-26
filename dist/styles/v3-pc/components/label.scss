@@ -1,0 +1,6 @@
+@use '../common/mixin' as *;
+
+.design-label {
+  color: var(--Label-Primary);
+  @include body-m-r();
+}

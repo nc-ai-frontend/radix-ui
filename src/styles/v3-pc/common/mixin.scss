@@ -1,0 +1,691 @@
+@use 'sass:map';
+@use 'figma' as *;
+@use 'buttons' as *;
+@use 'animations' as *;
+
+// 유틸
+@mixin text-overflow($whiteSpace: nowrap) {
+  overflow: hidden;
+  white-space: $whiteSpace;
+  text-overflow: ellipsis;
+}
+
+@function addOpacity($baseColor, $opacity: 0.05) {
+  @return color-mix(in srgb, $baseColor calc($opacity * 100%), transparent);
+}
+
+/**
+* 기본 버튼 관련 시작
+*/
+// 기본 버튼
+@mixin button($size: 'medium', $variant: 'primary', $type: 'filled') {
+  // 공통
+  overflow: hidden;
+  display: inline-flex;
+  border-radius: 6px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 12px;
+  white-space: nowrap;
+  transition: all 0.2s;
+
+  .icon {
+    flex-grow: 0;
+    flex-shrink: 0;
+  }
+
+  .text {
+    @include text-overflow;
+  }
+
+  // ./buttons.scss 참고
+  @include apply-button-size($size);
+  @include apply-button-styles($type, $variant);
+}
+
+/**
+* 기본 버튼 관련 끝
+*/
+
+/**
+* 아이콘 버튼 관련 시작
+*/
+@mixin iconButton($options: ()) {
+  $buttonSize: map.get($options, 'buttonSize') or 36px; // 버튼 사이즈
+  $iconSize: map.get($options, 'iconSize') or 16px; // 아이콘 사이즈
+  $borderRadius: map.get($options, 'borderRadius') or 6px; // 보더 래디우스
+
+  $defaultBgColor: map.get($options, 'defaultBgColor') or transparent; // 기본 배경색
+  $defaultLineColor: map.get($options, 'defaultLineColor') or $defaultBgColor; // 기본 라인색
+  $defaultBgOpacity: map.get($options, 'defaultBgOpacity') or 0; // 기본 배경투명도
+  $defaultIconColor: map.get($options, 'defaultIconColor') or
+    var(--Colors-Grey-900); // 기본 아이콘색
+
+  $hoverBgColor: map.get($options, 'hoverBgColor') or var(--Colors-Grey-900); // 오버 배경색
+  $hoverLineColor: map.get($options, 'hoverLineColor') or $hoverBgColor; // 오버 라인색
+  $hoverBgOpacity: map.get($options, 'hoverBgOpacity') or 0.07; // 오버 배경투명도
+  $hoverIconColor: map.get($options, 'hoverIconColor') or var(--Colors-Grey-900); // 오버 아이콘색
+
+  $activeBgColor: map.get($options, 'activeBgColor') or $hoverBgColor; // 활성 배경색
+  $activeLineColor: map.get($options, 'activeLineColor') or $activeBgColor; // 활성 라인색
+  $activeIconColor: map.get($options, 'activeIconColor') or
+    var(--Colors-Blue-400); // 활성 아이콘색
+
+  $disabledBgOpacity: map.get($options, 'disabledBgOpacity') or 1; // 비활성 배경투명도
+  $disabledIconColor: map.get($options, 'disabledIconColor') or
+    var(--Colors-Grey-400); // 비활성 아이콘색
+
+  // 기본
+  z-index: 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: $buttonSize;
+  height: $buttonSize;
+  transition: all 0.2s;
+  &:before {
+    z-index: -1;
+    position: absolute;
+    inset: 0;
+    background-color: $defaultBgColor;
+    border: 1px solid $defaultLineColor;
+    border-radius: $borderRadius;
+    opacity: $defaultBgOpacity;
+    transition: all 0.2s;
+    content: '';
+  }
+  .icon {
+    width: $iconSize;
+    height: $iconSize;
+    color: $defaultIconColor;
+    transition: all 0.2s;
+  }
+  // 오버
+  &:hover {
+    &:before {
+      background-color: $hoverBgColor;
+      border-color: $hoverLineColor;
+      opacity: $hoverBgOpacity;
+    }
+    .icon {
+      color: $hoverIconColor;
+    }
+  }
+  // 활성
+  &[data-active='true'] {
+    &:before {
+      background-color: $activeBgColor;
+      border-color: $activeLineColor;
+      opacity: $hoverBgOpacity;
+    }
+    .icon {
+      color: $activeIconColor;
+    }
+  }
+  // 비활성
+  &:disabled {
+    &:before {
+      background-color: $defaultBgColor;
+      border-color: $defaultLineColor;
+      opacity: $disabledBgOpacity;
+    }
+    .icon {
+      color: $disabledIconColor;
+    }
+  }
+}
+
+/**
+* 아이콘 버튼 관련 끝
+*/
+
+/**
+* 원형 버튼 관련 시작
+*/
+@mixin circleButton($size: 'medium', $useTheme: 'true') {
+  // 공통
+  z-index: 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+
+  &:before {
+    z-index: -1;
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    transition: all 0.2s;
+    content: '';
+  }
+
+  .icon {
+    transition: all 0.2s;
+  }
+
+  // 사이즈
+  $sizes: (
+    medium: (
+      button-size: 40px,
+      icon-size: 18px,
+    ),
+    small: (
+      button-size: 32px,
+      icon-size: 14px,
+    ),
+  );
+
+  @each $key, $values in $sizes {
+    @if $size == $key {
+      width: map.get($values, 'button-size');
+      height: map.get($values, 'button-size');
+      .icon {
+        width: map.get($values, 'icon-size');
+        height: map.get($values, 'icon-size');
+      }
+    }
+  }
+
+  // 테마 대응
+  $themes: (
+    true: (
+      bg: var(--Colors-Grey-900),
+      opacity-default: 0.15,
+      opacity-hover: 0.3,
+      opacity-disabled: 0.2,
+      icon-color: var(--Colors-Grey-900),
+      icon-opacity-disabled: 0.15,
+    ),
+    false: (
+      bg: var(--Colors-White),
+      opacity-default: 0.25,
+      opacity-hover: 0.5,
+      opacity-disabled: 0.25,
+      icon-color: var(--Colors-White),
+      icon-opacity-disabled: 0.2,
+    ),
+  );
+
+  @each $key, $values in $themes {
+    @if $useTheme == $key or $useTheme == '#{$key}' {
+      &:before {
+        background-color: map.get($values, 'bg');
+        opacity: map.get($values, 'opacity-default');
+      }
+
+      .icon {
+        color: map.get($values, 'icon-color');
+      }
+
+      &:hover {
+        &:before {
+          opacity: map.get($values, 'opacity-hover');
+        }
+      }
+
+      &:disabled {
+        &:before {
+          opacity: map.get($values, 'opacity-disabled');
+        }
+
+        .icon {
+          opacity: map.get($values, 'icon-opacity-disabled');
+        }
+      }
+    }
+  }
+}
+
+/**
+* 원형 버튼 관련 끝
+*/
+
+/**
+* List Item 관련 시작
+*/
+@mixin list-item-wrapper-content {
+  z-index: 50;
+  min-width: 200px;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  border-radius: var(--Radius-Medium);
+  border: 1px solid var(--Line-Secondary);
+
+  color: var(--Label-Primary);
+  background-color: var(--Fill-Surface-Secondary);
+  transform-origin: var(--radix-dropdown-menu-content-transform-origin);
+  padding: 6px 4px;
+
+  &[data-state='open'] {
+    animation: fade-in zoom-in;
+    animation-duration: var(--animation-duration);
+  }
+  &[data-state='closed'] {
+    animation: fade-out zoom-out var(--animation-duration);
+  }
+
+  $directions: (
+    top: bottom,
+    bottom: top,
+    left: right,
+    right: left,
+  );
+
+  @each $from, $to in $directions {
+    @keyframes slide-in-from-#{$to}-2 {
+      @include slide($to, 2px);
+    }
+    @keyframes slide-out-to-#{$to}-2 {
+      @include slide($to, 2px);
+    }
+  }
+
+  @each $from, $to in $directions {
+    &[data-side='#{$from}'] {
+      animation: slide-in-from-#{$to}-2 var(--animation-duration);
+    }
+  }
+}
+
+@mixin list-item-wrapper-sub-content {
+  div[data-radix-popper-content-wrapper]:has(> &) {
+    top: -2px !important;
+    left: -4px !important;
+  }
+  @include list-item-wrapper-content;
+}
+
+@mixin list-item-disabled($color-disabled: var(--Label-Quinary)) {
+  pointer-events: none;
+  color: $color-disabled;
+  span {
+    color: $color-disabled;
+  }
+}
+
+@mixin list-item {
+  position: relative;
+  display: flex;
+  user-select: none;
+  align-items: center;
+  gap: 8px;
+  border-radius: var(--Radius-Small);
+  padding: 6px 8px;
+  outline: none;
+  color: var(--Label-Primary);
+  transition: all 0.15s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    background-color: addOpacity(var(--Interaction-Surface), 0.02);
+  }
+  svg {
+    pointer-events: none;
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+  }
+  @include text-style-body-m-14-r();
+
+  &[data-disabled] {
+    @include list-item-disabled;
+  }
+}
+
+@mixin list-item-has-left-icon {
+  @include list-item;
+  padding-left: 36px;
+}
+
+@mixin list-item-left-icon {
+  position: absolute;
+  left: 8px;
+  display: inline-flex;
+  height: 20px;
+  width: 20px;
+  font-size: 20px;
+  align-items: center;
+  justify-content: center;
+  svg {
+    height: 20px;
+    width: 20px;
+    fill: currentcolor;
+  }
+  span:has(> svg) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@mixin list-item-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-self: stretch;
+}
+
+@mixin list-item-label {
+  margin-bottom: 4px;
+  padding: 4px 8px 2px 8px;
+  color: var(--Label-Quaternary);
+  @include text-style-caption-m-12-r();
+}
+
+@mixin list-item-separator {
+  margin: 4px -4px;
+  height: 1px;
+  background-color: var(--Line-Secondary);
+}
+
+@mixin list-item-sub-trigger {
+  @include list-item;
+  .chevron-right {
+    width: 16px;
+    height: 16px;
+    margin-left: auto;
+    stroke: var(--Refine-Secondary);
+  }
+
+  &[data-state='open'] {
+    background-color: addOpacity(var(--Interaction-Surface), 0.02);
+  }
+}
+
+@mixin list-item-shortcut {
+  margin-left: auto;
+  color: var(--Label-Tertiary);
+  // TODO
+  @include text-style-caption-m-12-r();
+}
+
+/**
+* List Item 관련 끝
+*/
+
+/**
+* v1 TODO 삭제
+*/
+
+@mixin text-style-title-l-18-b() {
+  font-size: 18px;
+  font-family: 'Pretendard';
+  font-weight: 700;
+  font-style: normal;
+  line-height: 24px;
+  text-decoration: none;
+  text-transform: none;
+}
+@mixin text-style-title-m-16-b() {
+  font-size: 16px;
+  font-family: 'Pretendard';
+  font-weight: 700;
+  font-style: normal;
+  line-height: 20px;
+  text-decoration: none;
+  text-transform: none;
+}
+@mixin text-style-title-s-13-b() {
+  font-size: 13px;
+  font-family: 'Pretendard';
+  font-weight: 700;
+  font-style: normal;
+  line-height: 16px;
+  text-decoration: none;
+  text-transform: none;
+}
+@mixin text-style-body-l-16-r() {
+  font-size: 16px;
+  font-family: 'Pretendard';
+  font-weight: 400;
+  font-style: normal;
+  line-height: 28px;
+  text-decoration: none;
+  text-transform: none;
+}
+@mixin text-style-body-l-15-r() {
+  font-size: 15px;
+  font-family: 'Pretendard';
+  font-weight: 400;
+  font-style: normal;
+  line-height: 24px;
+  text-decoration: none;
+  text-transform: none;
+}
+@mixin text-style-body-m-14-r() {
+  font-size: 14px;
+  font-family: 'Pretendard';
+  font-weight: 400;
+  font-style: normal;
+  line-height: 20px;
+  text-decoration: none;
+  text-transform: none;
+}
+@mixin text-style-body-m-13-r() {
+  font-size: 13px;
+  font-family: 'Pretendard';
+  font-weight: 400;
+  font-style: normal;
+  line-height: 18px;
+  text-decoration: none;
+  text-transform: none;
+}
+@mixin text-style-caption-l-14-r() {
+  font-size: 14px;
+  font-family: 'Pretendard';
+  font-weight: 400;
+  font-style: normal;
+  line-height: 16px;
+  text-decoration: none;
+  text-transform: none;
+}
+@mixin text-style-caption-m-12-r() {
+  font-size: 12px;
+  font-family: 'Pretendard';
+  font-weight: 400;
+  font-style: normal;
+  line-height: 16px;
+  text-decoration: none;
+  text-transform: none;
+}
+@mixin effect-style-200() {
+  box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.28);
+}
+
+/**
+* V3 Font styles
+*/
+
+@mixin display-l-b {
+  font-size: 40px;
+  font-family: Pretendard;
+  font-weight: 700;
+  font-style: normal;
+  line-height: 52px;
+  text-decoration: none;
+  text-transform: none;
+}
+@mixin display-l-r {
+  font-size: 40px;
+  font-family: Pretendard;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 52px;
+  text-decoration: none;
+  text-transform: none;
+}
+@mixin display-m-b {
+  font-size: 32px;
+  font-family: Pretendard;
+  font-weight: 700;
+  font-style: normal;
+  line-height: 40px;
+  text-decoration: none;
+  text-transform: none;
+}
+@mixin display-m-r {
+  font-size: 32px;
+  font-family: Pretendard;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 40px;
+  text-decoration: none;
+  text-transform: none;
+}
+@mixin title-l-sb {
+  font-size: 24px;
+  font-family: Pretendard;
+  font-weight: 600;
+  font-style: normal;
+  line-height: 32px;
+  text-decoration: none;
+  text-transform: none;
+}
+@mixin title-l-r {
+  font-size: 24px;
+  font-family: Pretendard;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 32px;
+  text-decoration: none;
+  text-transform: none;
+}
+@mixin title-m-sb {
+  font-size: 20px;
+  font-family: Pretendard;
+  font-weight: 600;
+  font-style: normal;
+  line-height: 26px;
+  text-decoration: none;
+  text-transform: none;
+}
+@mixin title-m-r {
+  font-size: 20px;
+  font-family: Pretendard;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 26px;
+  text-decoration: none;
+  text-transform: none;
+}
+@mixin title-s-sb {
+  font-size: 16px;
+  font-family: Pretendard;
+  font-weight: 600;
+  font-style: normal;
+  line-height: 22px;
+  text-decoration: none;
+  text-transform: none;
+}
+@mixin title-s-r {
+  font-size: 16px;
+  font-family: Pretendard;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 22px;
+  text-decoration: none;
+  text-transform: none;
+}
+@mixin body-l-b {
+  font-size: 15px;
+  font-family: Pretendard;
+  font-weight: 700;
+  font-style: normal;
+  line-height: 21px;
+  text-decoration: none;
+  text-transform: none;
+}
+@mixin body-l-r {
+  font-size: 15px;
+  font-family: Pretendard;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 21px;
+  text-decoration: none;
+  text-transform: none;
+}
+@mixin body-m-b {
+  font-size: 14px;
+  font-family: Pretendard;
+  font-weight: 700;
+  font-style: normal;
+  line-height: 20px;
+  text-decoration: none;
+  text-transform: none;
+}
+@mixin body-m-r {
+  font-size: 14px;
+  font-family: Pretendard;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 20px;
+  text-decoration: none;
+  text-transform: none;
+}
+@mixin caption-l-b {
+  font-size: 12px;
+  font-family: Pretendard;
+  font-weight: 700;
+  font-style: normal;
+  line-height: 16px;
+  text-decoration: none;
+  text-transform: none;
+}
+@mixin caption-l-r {
+  font-size: 12px;
+  font-family: Pretendard;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 16px;
+  text-decoration: none;
+  text-transform: none;
+}
+@mixin caption-m-b {
+  font-size: 11px;
+  font-family: Pretendard;
+  font-weight: 700;
+  font-style: normal;
+  line-height: 12px;
+  text-decoration: none;
+  text-transform: none;
+}
+@mixin caption-m-r {
+  font-size: 11px;
+  font-family: Pretendard;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 12px;
+  text-decoration: none;
+  text-transform: none;
+}
+
+@mixin elevation-10 {
+  box-shadow: 0px 3px 6px #000000;
+}
+@mixin elevation-20 {
+  box-shadow: 0px 4px 8px #000000;
+}
+@mixin elevation-30 {
+  box-shadow: 0px 6px 11px #000000;
+}
+@mixin elevation-40 {
+  box-shadow: 0px 8px 14px #000000;
+}
+@mixin elevation-blur-10 {
+  backdrop-filter: blur(8px);
+  box-shadow: 0px 2px 6px #000000;
+}
+@mixin elevation-blur-20 {
+  backdrop-filter: blur(8px);
+  box-shadow: 0px 4px 9px #000000;
+}
+@mixin elevation-blur-30 {
+  backdrop-filter: blur(8px);
+  box-shadow: 0px 6px 18px #000000;
+}
+@mixin elevation-blur-40 {
+  box-shadow: 0px 8px 20px #000000;
+}

@@ -1,0 +1,340 @@
+@use 'sass:map';
+@use 'figma' as *;
+
+@function hover-overlay(
+  $base,
+  $overlay: var(--Interaction-Surface, #000),
+  $opacity: 0.05
+) {
+  @return color-mix(in srgb, $base, $overlay $opacity * 100%);
+}
+
+$button-sizes: (
+  large: (
+    min-width: 120px,
+    min-height: 46px,
+    padding: 11px 18px,
+    icon-size: 24px,
+    text: text-style-body-m-14-b,
+  ),
+  medium: (
+    min-width: 100px,
+    min-height: 38px,
+    padding: 8px 16px,
+    icon-size: 20px,
+    text: text-style-body-m-13-b,
+  ),
+  small: (
+    min-width: 80px,
+    min-height: 32px,
+    padding: 8px 14px,
+    icon-size: 16px,
+    text: text-style-body-m-13-b,
+  ),
+);
+
+@mixin apply-button-size($size) {
+  @if map.has-key($button-sizes, $size) {
+    $size-map: map.get($button-sizes, $size);
+    min-width: map.get($size-map, 'min-width');
+    min-height: map.get($size-map, 'min-height');
+    padding: map.get($size-map, padding);
+    // @include map.get($size-map, text);
+
+    .icon {
+      width: map.get($size-map, icon-size);
+      height: map.get($size-map, icon-size);
+    }
+  }
+}
+
+// 버튼 타입 맵
+
+$filled-button-types: (
+  primary: (
+    color: var(--Static-White, #fff),
+    background: var(--Refine-Accent, #006eff),
+    disabled-color: var(--Label-Quinary, rgba(23, 23, 23, 0.2)),
+    disabled-background: var(--Interaction-Disabled, rgba(56, 58, 58, 0.12)),
+    hovered-color: var(--Static-White, #fff),
+    hovered-background: hover-overlay(var(--Refine-Accent, #006eff)),
+    activated-color: var(--Static-White, #fff),
+    activated-background: hover-overlay(
+        $base: var(--Refine-Accent, #006eff),
+        $opacity: 0.09,
+      ),
+  ),
+  secondary: (
+    color: var(--Invers-White, #fff),
+    background: var(--Refine-Primary, #171717),
+    disabled-color: var(--Label-Quinary, rgba(23, 23, 23, 0.2)),
+    disabled-background: var(--Interaction-Disabled, rgba(56, 58, 58, 0.12)),
+    hovered-color: var(--Invers-White, #fff),
+    hovered-background: hover-overlay(
+        var(--Refine-Primary, #171717),
+        var(--Invers-White, #fff)
+      ),
+    activated-color: var(--Invers-White, #fff),
+    activated-background: hover-overlay(
+        var(--Refine-Primary, #171717),
+        var(--Invers-White, #fff),
+        0.09
+      ),
+  ),
+  tertiary: (
+    color: var(--Label-Primary, #171717),
+    background: var(--Refine-Senary, rgba(23, 23, 23, 0.09)),
+    disabled-color: var(--Label-Quinary, rgba(23, 23, 23, 0.2)),
+    disabled-background: var(--Interaction-Disabled, rgba(56, 58, 58, 0.12)),
+    hovered-color: var(--Label-Primary, #171717),
+    hovered-background: hover-overlay(
+        var(--Refine-Senary, rgba(23, 23, 23, 0.09))
+      ),
+    activated-color: var(--Label-Primary, #171717),
+    activated-background: hover-overlay(
+        $base: var(--Refine-Senary, rgba(23, 23, 23, 0.09)),
+        $opacity: 0.09,
+      ),
+  ),
+  negative: (
+    color: var(--Static-White, #fff),
+    background: var(--Status-Negative, #f33939),
+    disabled-color: var(--Label-Quinary, rgba(23, 23, 23, 0.2)),
+    disabled-background: var(--Interaction-Disabled, rgba(56, 58, 58, 0.12)),
+    hovered-color: var(--Static-White, #fff),
+    hovered-background: hover-overlay(var(--Status-Negative, #f33939)),
+    activated-color: var(--Static-White, #fff),
+    activated-background: hover-overlay(
+        $base: var(--Status-Negative, #f33939),
+        $opacity: 0.09,
+      ),
+  ),
+);
+
+$tonal-button-types: (
+  primary: (
+    color: var(--Static-Primary, #006eff),
+    background: hover-overlay(transparent, var(--Static-Primary, #006eff), 0.07),
+    disabled-color: var(--Label-Quinary, rgba(23, 23, 23, 0.2)),
+    disabled-background: var(--Interaction-Disabled, rgba(56, 58, 58, 0.12)),
+    hovered-color: var(--Static-Primary, #006eff),
+    hovered-background: hover-overlay(
+        hover-overlay(transparent, var(--Static-Primary, #006eff), 0.07),
+        var(--Interaction-Primary, #006eff),
+        0.02
+      ),
+    activated-color: var(--Static-Primary, #006eff),
+    activated-background: hover-overlay(
+        hover-overlay(transparent, var(--Static-Primary, #006eff), 0.07),
+        var(--Interaction-Primary, #006eff),
+        0.03
+      ),
+  ),
+  secondary: (
+    color: var(--Label-Primary, #171717),
+    background: hover-overlay(transparent, var(--Invers-Black, #000), 0.04),
+    disabled-color: var(--Label-Quinary, rgba(23, 23, 23, 0.2)),
+    disabled-background: var(--Interaction-Disabled, rgba(56, 58, 58, 0.12)),
+    hovered-color: var(--Label-Primary, #171717),
+    hovered-background: hover-overlay(
+        hover-overlay(transparent, var(--Invers-Black, #000), 0.04),
+        var(--Interaction-Surface, #000),
+        0.02
+      ),
+    activated-color: var(--Label-Primary, #171717),
+    activated-background: hover-overlay(
+        hover-overlay(transparent, var(--Invers-Black, #000), 0.04),
+        var(--Interaction-Surface, #000),
+        0.03
+      ),
+  ),
+  negative: (
+    color: var(--Status-Negative, #f33939),
+    background: hover-overlay(
+        transparent,
+        var(--Status-Negative, #f33939),
+        0.08
+      ),
+    disabled-color: var(--Status-Negative, #f33939),
+    disabled-background: var(--Interaction-Disabled, rgba(56, 58, 58, 0.12)),
+    hovered-color: var(--Status-Negative, #f33939),
+    hovered-background: hover-overlay(
+        hover-overlay(transparent, var(--Status-Negative, #f33939), 0.08),
+        var(--Interaction-Primary, #006eff),
+        0.02
+      ),
+    activated-color: var(--Status-Negative, #f33939),
+    activated-background: hover-overlay(
+        hover-overlay(transparent, var(--Status-Negative, #f33939), 0.08),
+        var(--Interaction-Primary, #006eff),
+        0.03
+      ),
+  ),
+);
+
+$outlined-button-types: (
+  primary: (
+    color: var(--Static-Primary, #006eff),
+    border-color: var(--Static-Primary, #006eff),
+    disabled-color: var(--Label-Quinary, rgba(23, 23, 23, 0.2)),
+    disabled-background: var(--Interaction-Disabled, rgba(56, 58, 58, 0.12)),
+    // TODO BELOW
+    hovered-color: var(--Static-Primary, #006eff),
+    hovered-border-color: var(--Static-Primary, #006eff),
+    hovered-background: hover-overlay(
+        transparent,
+        var(--Static-Primary, #006eff),
+        0.02
+      ),
+    activated-color: var(--Static-White, #fff),
+    activated-border-color: var(--Refine-Accent, #006eff),
+    activated-background: hover-overlay(
+        transparent,
+        var(--Refine-Accent, #006eff),
+        0.03
+      ),
+  ),
+  secondary: (
+    color: var(--Label-Primary, #171717),
+    border-color: var(--Line-Secondary, #333),
+    disabled-color: var(--Label-Quinary, rgba(23, 23, 23, 0.2)),
+    disabled-background: var(--Interaction-Disabled, rgba(56, 58, 58, 0.12)),
+    // TODO BELOW
+    hovered-color: var(--Label-Primary, #171717),
+    hovered-border-color: var(--Line-Secondary, #333),
+    hovered-background: hover-overlay(
+        transparent,
+        var(--Interaction-Surface, #000),
+        0.02
+      ),
+    activated-color: var(--Label-Primary, #171717),
+    activated-border-color: var(--Refine-Accent, #006eff),
+    activated-background: hover-overlay(
+        transparent,
+        var(--Interaction-Surface, #000),
+        0.03
+      ),
+  ),
+  negative: (
+    color: var(--Status-Negative, #fc3f3f),
+    border-color: var(--Status-Negative, #fc3f3f),
+    disabled-color: var(--Label-Quinary, rgba(23, 23, 23, 0.2)),
+    disabled-background: var(--Interaction-Disabled, rgba(56, 58, 58, 0.12)),
+    // TODO BELOW
+    hovered-color: var(--Status-Negative, #fc3f3f),
+    hovered-border-color: var(--Status-Negative, #fc3f3f),
+    hovered-background: hover-overlay(
+        transparent,
+        var(--Status-Negative, #fc3f3f),
+        0.02
+      ),
+    activated-color: var(--Static-White, #fff),
+    activated-border-color: var(--Status-Negative, #f33939),
+    activated-background: hover-overlay(
+        transparent,
+        var(--Status-Negative, #f33939),
+        0.03
+      ),
+  ),
+);
+
+$text-button-types: (
+  primary: (
+    color: var(--Static-Primary, #006eff),
+    disabled-color: var(--Label-Quinary, rgba(23, 23, 23, 0.2)),
+    // TODO BELOW
+    hovered-color: var(--Static-Primary, #006eff),
+    hovered-background: hover-overlay(
+        transparent,
+        var(--Refine-Accent, #006eff),
+        0.05
+      ),
+    activated-color: var(--Static-Primary, #006eff),
+    activated-background: hover-overlay(
+        transparent,
+        var(--Refine-Accent, #006eff),
+        0.09
+      ),
+  ),
+  secondary: (
+    color: var(--Label-Primary, #171717),
+    disabled-color: var(--Label-Quinary, rgba(23, 23, 23, 0.2)),
+    // TODO BELOW
+    hovered-color: var(--Label-Primary, #171717),
+    hovered-background: hover-overlay(
+        transparent,
+        var(--Interaction-Surface, #000),
+        0.05
+      ),
+    activated-color: var(--Label-Primary, #171717),
+    activated-background: hover-overlay(
+        transparent,
+        var(--Interaction-Surface, #000),
+        0.09
+      ),
+  ),
+  negative: (
+    color: var(--Status-Negative, #f33939),
+    hovered-color: var(--Status-Negative, #f33939),
+    hovered-background: hover-overlay(
+        transparent,
+        var(--Status-Negative, #f33939),
+        0.05
+      ),
+    activated-color: var(--Status-Negative, #f33939),
+    activated-background: hover-overlay(
+        transparent,
+        var(--Status-Negative, #f33939),
+        0.09
+      ),
+  ),
+);
+
+$button-types: (
+  'filled': $filled-button-types,
+  tonal: $tonal-button-types,
+  outlined: $outlined-button-types,
+  text: $text-button-types,
+);
+
+// 버튼 스타일 적용 함수
+@mixin apply-button-styles($type, $variant) {
+  @if map.has-key($button-types, $type) {
+    $type-map: map.get($button-types, $type);
+    @if map.has-key($type-map, $variant) {
+      $values: map.get($type-map, $variant);
+      &:not(:disabled) {
+        color: map.get($values, 'color');
+        background-color: map.get($values, background);
+
+        &:hover {
+          color: map.get($values, hovered-color);
+          background-color: map.get($values, hovered-background);
+        }
+
+        &[data-active='true'],
+        &:active {
+          color: map.get($values, activated-color);
+          background-color: map.get($values, activated-background);
+        }
+
+        @if $type == outlined {
+          border: 1px solid map.get($values, border-color);
+          &:hover {
+            border-color: map.get($values, hovered-border-background);
+          }
+
+          &[data-active='true'],
+          &:active {
+            border-color: map.get($values, activated-border-background);
+          }
+        }
+      }
+
+      &:disabled {
+        color: map.get($values, disabled-color);
+        background-color: map.get($values, disabled-background);
+      }
+    }
+  }
+}

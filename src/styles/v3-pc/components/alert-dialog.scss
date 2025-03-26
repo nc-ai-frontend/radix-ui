@@ -1,0 +1,58 @@
+@use '../common/mixin' as *;
+
+.design-alert-dialog-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.design-alert-dialog-overlay[data-state='open'] {
+  animation: enter 1s;
+}
+
+.design-alert-dialog-overlay[data-state='closed'] {
+  animation: exit 1s;
+  display: none;
+}
+
+.design-alert-dialog-content {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 50;
+  text-align: left;
+  width: 100%;
+  max-width: 32rem;
+  display: grid;
+  padding: 28px 28px 24px 28px;
+  border-radius: var(--Radius-Large);
+  background-color: var(--Fill-Surface-Primary);
+  transition: transform 0.2s ease;
+  .design-alert-dialog-footer {
+    display: flex;
+    justify-content: end;
+    gap: 8px;
+  }
+}
+
+.design-alert-dialog-title {
+  margin-bottom: 12px;
+  color: var(--Label-Primary);
+  @include title-s-sb;
+}
+
+.design-alert-dialog-description {
+  margin-bottom: 28px;
+  color: var(--Label-Secondary);
+  @include body-l-r;
+}
+
+.design-alert-dialog-action {
+  @include button();
+}
+
+.design-alert-dialog-cancel {
+  @include button('medium', 'tertiary');
+}

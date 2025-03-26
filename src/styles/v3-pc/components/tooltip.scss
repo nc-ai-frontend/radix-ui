@@ -1,0 +1,24 @@
+.design-tooltip-content {
+  overflow: hidden;
+  color: var(--Invers-White, #fff);
+  user-select: none;
+  min-width: 60px;
+  max-width: 240px;
+  padding: 8px 10px;
+  flex-direction: column;
+  gap: 2px;
+  border-radius: 8px;
+  background: var(--Invers-Black, #000);
+
+  animation-duration: 200ms;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  @each $side in top, right, bottom, left {
+    &[data-state='delayed-open'][data-side='#{$side}'] {
+      animation-name: slide-in-from-#{$side};
+    }
+  }
+}
+
+.design-tooltip-arrow {
+  fill: var(--color-container-border-400);
+}

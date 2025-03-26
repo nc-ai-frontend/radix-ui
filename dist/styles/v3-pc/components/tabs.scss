@@ -1,0 +1,43 @@
+@use '../common/mixin' as *;
+
+.design-tabs-list {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--Fill-Background-Primary);
+  color: var(--Label-Tertiary);
+  @include elevation-10;
+  @include title-s-sb;
+}
+
+.design-tabs-trigger {
+  display: inline-flex;
+  flex: 1 0;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  padding: 10px 8px;
+  transition: all 150ms ease-in-out;
+  border-bottom: 2px solid var(--Line-Tertiary);
+  &:focus-visible {
+    outline: none;
+  }
+  &:disabled {
+    pointer-events: none;
+    color: var(--Label-Quinary);
+  }
+  &:hover {
+    color: var(--Label-Primary);
+    border-bottom: 2px solid var(--Label-Primary);
+  }
+  &[data-state='active'] {
+    color: var(--Label-Primary);
+    border-bottom: 2px solid var(--Label-Primary);
+  }
+}
+
+.design-tabs-content {
+  &:focus-visible {
+    outline: none;
+  }
+}

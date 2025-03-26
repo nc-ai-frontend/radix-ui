@@ -1,0 +1,18 @@
+$background-color_1: var(--Fill-Surface-Quaternary);
+$background-color_2: var(--Static-Primary, #006eff);
+
+.design-progress {
+  position: relative;
+  height: 4px;
+  width: 100%;
+  overflow: hidden;
+  background-color: $background-color_1;
+  border-radius: var(--Radius-round, 999999px);
+}
+.design-progress-indicator {
+  height: 100%;
+  width: 100%;
+  background-color: $background-color_2;
+  transition: all 0.3s ease;
+  border-radius: var(--Radius-round, 999999px);
+}

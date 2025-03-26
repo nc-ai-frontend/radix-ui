@@ -1,0 +1,175 @@
+@use 'sass:map';
+@use '../common/mixin' as *;
+
+$color-main: var(--Label-Primary);
+
+$background-main: var(--Fill-Surface-Secondary);
+
+//------------------------------------------------------------------
+// Select Trigger
+//------------------------------------------------------------------
+.design-select-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 6px 8px 6px 12px;
+  gap: 6px;
+  border: 1px solid var(--Line-Secondary);
+  border-radius: var(--Radius-Small);
+  background-color: $background-main;
+
+  svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+
+  span {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    svg {
+      color: var(--Refine-Tertiary);
+    }
+    @include body-m-r;
+  }
+
+  .design-select-icon {
+    color: var(--Refine-Secondary);
+    transition: transform 0.2s ease-in-out;
+  }
+
+  &:hover {
+    &:not([disabled='true']) {
+      border: 1px solid var(--Line-Primary);
+    }
+  }
+
+  &[data-state='open'] {
+    &:not([disabled='true']) {
+      border: 1px solid var(--Line-Primary);
+      .design-select-icon {
+        transform: rotate(-180deg);
+      }
+    }
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    color: var(--Label-Quinary);
+    background-color: var(--Interaction-Disabled);
+    pointer-events: none;
+    svg {
+      color: var(--Label-Quinary);
+    }
+  }
+}
+
+// Adjust border-radius based on the popover side.
+// $trigger-border-radius-map: (
+//   top: 0 0 6px 6px,
+//   left: 6px 0 0 6px,
+//   right: 0 6px 6px 0,
+//   bottom: 6px 6px 0 0,
+// );
+
+// body {
+//   @each $side, $radius in $trigger-border-radius-map {
+//     &:has(div[data-side='#{$side}']) {
+//       .design-select-trigger[data-state='open'] {
+//         border-radius: $radius;
+//       }
+//     }
+//   }
+// }
+
+//------------------------------------------------------------------
+// Scroll Buttons
+//------------------------------------------------------------------
+%scroll-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem 0;
+  cursor: default;
+
+  svg {
+    width: 1rem;
+    height: 1rem;
+  }
+}
+
+.design-select-scroll-up-button {
+  @extend %scroll-button;
+}
+
+.design-select-scroll-down-button {
+  @extend %scroll-button;
+}
+
+//------------------------------------------------------------------
+// Select Content
+//------------------------------------------------------------------
+.design-select-content {
+  @include list-item-wrapper-content;
+}
+
+//------------------------------------------------------------------
+// Select Content Popper
+//------------------------------------------------------------------
+.design-select-content-popper {
+  &[data-side='bottom'] {
+    transform: translateY(4px);
+  }
+  &[data-side='top'] {
+    transform: translateY(-4px);
+  }
+  &[data-side='left'] {
+    transform: translateX(-4px);
+  }
+  &[data-side='right'] {
+    transform: translateX(4px);
+  }
+}
+
+//------------------------------------------------------------------
+// Primitive Viewports
+//------------------------------------------------------------------
+.design-select-primitive-viewport {
+  padding: 0;
+}
+
+.design-select-primitive-viewport-popper {
+  height: var(--radix-select-trigger-height);
+  min-width: calc(var(--radix-select-trigger-width) - 2px);
+}
+
+//------------------------------------------------------------------
+// Select Items & Labels & Indicator &  Group
+//------------------------------------------------------------------
+.design-select-label {
+  @include list-item-label;
+}
+
+.design-select-item {
+  @include list-item;
+}
+
+.design-select-group {
+  @include list-item-group;
+}
+
+//------------------------------------------------------------------
+// Separator
+//------------------------------------------------------------------
+.design-select-separator {
+  @include list-item-separator;
+}
+.design-select-separator:last-child {
+  display: none;
+}

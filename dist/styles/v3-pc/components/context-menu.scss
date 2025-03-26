@@ -1,0 +1,48 @@
+@use '../common/mixin.scss' as *;
+
+.design-context-menu-content {
+  @include list-item-wrapper-content;
+}
+.design-context-menu-sub-content {
+  @include list-item-wrapper-sub-content;
+}
+
+.design-context-menu-item {
+  @include list-item;
+}
+
+.design-context-menu-sub-trigger {
+  @include list-item-sub-trigger;
+}
+
+.design-context-menu-checkbox-item,
+.design-context-menu-radio-item {
+  @include list-item-has-left-icon;
+}
+
+.design-context-menu-checkbox-item-span,
+.design-context-menu-radio-item-span {
+  @include list-item-left-icon;
+}
+
+.design-context-menu-label {
+  padding: 0.375rem 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+.design-context-menu-separator {
+  .custom-divider {
+    margin: 0.25rem -0.25rem;
+    height: 1px;
+    background-color: var(--color-container-border-200);
+  }
+}
+
+.design-context-menu-shortcut {
+  margin-left: auto;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: var(--muted-foreground);
+}
