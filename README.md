@@ -38,7 +38,7 @@ npm install nc-ai-frontend-radix-ui
 - Form(제공하지 않음): https://www.radix-ui.com/primitives/docs/components/form
 - Hover Card(제공하지 않음): https://www.radix-ui.com/primitives/docs/components/hover-card
 - Label: https://www.radix-ui.com/primitives/docs/components/label
-- Menubar: https://www.radix-ui.com/primitives/docs/components/menubar
+- Menubar(제공하지 않음): https://www.radix-ui.com/primitives/docs/components/menubar
 - Navigation Menu(제공하지 않음): https://www.radix-ui.com/primitives/docs/components/navigation-menu
 - Popover(제공하지 않음): https://www.radix-ui.com/primitives/docs/components/popover
 - Progress: https://www.radix-ui.com/primitives/docs/components/progress
