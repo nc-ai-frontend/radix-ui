@@ -1,11 +1,14 @@
-import * as React from 'react';
-import * as TooltipPrimitive from '@radix-ui/react-tooltip';
+import * as React from "react";
+import * as TooltipPrimitive from "@radix-ui/react-tooltip";
 declare const TooltipProvider: React.FC<TooltipPrimitive.TooltipProviderProps>;
 declare const TooltipRoot: React.FC<TooltipPrimitive.TooltipProps>;
 declare const TooltipTrigger: React.ForwardRefExoticComponent<TooltipPrimitive.TooltipTriggerProps & React.RefAttributes<HTMLButtonElement>>;
 declare const TooltipPortal: React.FC<TooltipPrimitive.TooltipPortalProps>;
 declare const TooltipArrow: React.ForwardRefExoticComponent<TooltipPrimitive.TooltipArrowProps & React.RefAttributes<SVGSVGElement>>;
-declare const TooltipContent: React.ForwardRefExoticComponent<Omit<TooltipPrimitive.TooltipContentProps & React.RefAttributes<HTMLDivElement>, "ref"> & React.RefAttributes<HTMLDivElement>>;
+declare const TooltipContent: {
+    ({ sideOffset, className, ref, ...props }: React.ComponentPropsWithRef<typeof TooltipPrimitive.Content>): import("react/jsx-runtime").JSX.Element;
+    displayName: string;
+};
 type CustomProps = {
     text: string;
     arrow?: boolean;

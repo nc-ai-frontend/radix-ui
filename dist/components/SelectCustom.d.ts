@@ -1,7 +1,7 @@
-import * as React from 'react';
-import * as SelectPrimitive from '@radix-ui/react-select';
+import * as React from "react";
+import * as SelectPrimitive from "@radix-ui/react-select";
 type SelectItemProps = SelectPrimitive.SelectItemProps & {
-    text?: string;
+    text: string;
 };
 type SelectGroupProps = {
     groups: {
@@ -11,7 +11,7 @@ type SelectGroupProps = {
 };
 type SelectWrapperProps = SelectPrimitive.SelectProps & SelectPrimitive.SelectContentProps & {
     placeholder?: string;
-    width?: React.CSSProperties['width'];
+    width?: React.CSSProperties["width"];
     isPortal?: boolean;
 };
 declare const Select: ({ groups, ...props }: SelectWrapperProps & SelectGroupProps) => import("react/jsx-runtime").JSX.Element;

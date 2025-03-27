@@ -1,29 +1,25 @@
-'use client';
+"use client";
 
-import * as React from 'react';
-import * as SliderPrimitive from '@radix-ui/react-slider';
-import { cn, prefix } from '@react-monorepo/ui';
+import * as React from "react";
+import * as SliderPrimitive from "@radix-ui/react-slider";
+import { cn, prefix } from "@";
 
-const Slider = (
-  {
-    className,
-    ...props
-  }: React.ComponentPropsWithoutRef<typeof SliderPrimitive.Root>,
-  ref: React.Ref<HTMLSpanElement>,
-) => (
+const Slider = ({
+  className,
+  ...props
+}: React.ComponentPropsWithRef<typeof SliderPrimitive.Root>) => (
   <SliderPrimitive.Root
-    ref={ref}
-    className={cn(prefix + 'slider', className)}
+    className={cn(prefix + "slider", className)}
     {...props}
     data-disabled={props.disabled}
   >
     <SliderPrimitive.Track
-      className={cn(prefix + 'slider-track')}
+      className={cn(prefix + "slider-track")}
       data-disabled={props.disabled}
     >
-      <SliderPrimitive.Range className={cn(prefix + 'slider-range')} />
+      <SliderPrimitive.Range className={cn(prefix + "slider-range")} />
     </SliderPrimitive.Track>
-    <SliderPrimitive.Thumb className={cn(prefix + 'slider-thumb')} />
+    <SliderPrimitive.Thumb className={cn(prefix + "slider-thumb")} />
   </SliderPrimitive.Root>
 );
 

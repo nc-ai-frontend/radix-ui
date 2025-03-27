@@ -1,20 +1,23 @@
-'use client';
+"use client";
 
-import * as React from 'react';
-import * as SelectPrimitive from '@radix-ui/react-select';
+import * as React from "react";
+import * as SelectPrimitive from "@radix-ui/react-select";
 import {
   SelectContent,
   SelectGroup,
   SelectItem,
+  SelectItemText,
   SelectLabel,
   SelectPortal,
   SelectRoot,
   SelectSeparator,
   SelectTrigger,
   SelectValue,
-} from '@react-monorepo/ui';
+} from "@";
 
-type SelectItemProps = SelectPrimitive.SelectItemProps & { text?: string };
+type SelectItemProps = SelectPrimitive.SelectItemProps & {
+  text: string;
+};
 
 type SelectGroupProps = {
   groups: { items: SelectItemProps[]; label?: string }[];
@@ -23,7 +26,7 @@ type SelectGroupProps = {
 type SelectWrapperProps = SelectPrimitive.SelectProps &
   SelectPrimitive.SelectContentProps & {
     placeholder?: string;
-    width?: React.CSSProperties['width'];
+    width?: React.CSSProperties["width"];
     isPortal?: boolean;
   };
 
@@ -69,10 +72,14 @@ const SelectWrapper = ({
       </SelectTrigger>
       {isPortal ? (
         <SelectPortal>
-          <SelectContent {...props}>{children}</SelectContent>
+          <SelectContent style={{ width }} {...props}>
+            {children}
+          </SelectContent>
         </SelectPortal>
       ) : (
-        <SelectContent {...props}>{children}</SelectContent>
+        <SelectContent style={{ width }} {...props}>
+          {children}
+        </SelectContent>
       )}
     </SelectRoot>
   );
@@ -85,17 +92,17 @@ const Select = ({
   return (
     <SelectWrapper {...props}>
       {groups.map(({ label, items }, idx) => (
-        <div key={`group-${idx}`}>
+        <React.Fragment key={`group-${idx}`}>
           <SelectGroup>
             {label && <SelectLabel>{label}</SelectLabel>}
             {items.map((item) => (
               <SelectItem {...item} key={item.value}>
-                {item.text ?? item.textValue ?? item.value}
+                <SelectItemText>{item.text}</SelectItemText>
               </SelectItem>
             ))}
           </SelectGroup>
           <SelectSeparator />
-        </div>
+        </React.Fragment>
       ))}
     </SelectWrapper>
   );

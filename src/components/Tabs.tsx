@@ -1,17 +1,17 @@
-'use client';
+"use client";
 
-import * as React from 'react';
-import * as TabsPrimitive from '@radix-ui/react-tabs';
-import { cn, prefix } from '@react-monorepo/ui';
+import * as React from "react";
+import * as TabsPrimitive from "@radix-ui/react-tabs";
+import { cn, prefix } from "@";
 
 const TabsRoot = TabsPrimitive.Root;
 
 const TabsList = ({
   className,
   ...props
-}: React.ComponentProps<typeof TabsPrimitive.List>) => (
+}: React.ComponentPropsWithRef<typeof TabsPrimitive.List>) => (
   <TabsPrimitive.List
-    className={cn(prefix + 'tabs-list', className)}
+    className={cn(prefix + "tabs-list", className)}
     {...props}
   />
 );
@@ -20,9 +20,9 @@ TabsList.displayName = TabsPrimitive.List.displayName;
 const TabsTrigger = ({
   className,
   ...props
-}: React.ComponentProps<typeof TabsPrimitive.Trigger>) => (
+}: React.ComponentPropsWithRef<typeof TabsPrimitive.Trigger>) => (
   <TabsPrimitive.Trigger
-    className={cn(prefix + 'tabs-trigger', className)}
+    className={cn(prefix + "tabs-trigger", className)}
     {...props}
   />
 );
@@ -31,9 +31,9 @@ TabsTrigger.displayName = TabsPrimitive.Trigger.displayName;
 const TabsContent = ({
   className,
   ...props
-}: React.ComponentProps<typeof TabsPrimitive.Content>) => (
+}: React.ComponentPropsWithRef<typeof TabsPrimitive.Content>) => (
   <TabsPrimitive.Content
-    className={cn(prefix + 'tabs-content', className)}
+    className={cn(prefix + "tabs-content", className)}
     {...props}
   />
 );

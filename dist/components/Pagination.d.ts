@@ -1,28 +1,34 @@
-import * as React from 'react';
+import * as React from "react";
 declare const Pagination: {
-    ({ className, ...props }: React.ComponentProps<"nav">): import("react/jsx-runtime").JSX.Element;
+    ({ className, ...props }: React.ComponentPropsWithRef<"nav">): import("react/jsx-runtime").JSX.Element;
     displayName: string;
 };
-declare const PaginationContent: React.ForwardRefExoticComponent<Omit<React.DetailedHTMLProps<React.HTMLAttributes<HTMLUListElement>, HTMLUListElement>, "ref"> & React.RefAttributes<HTMLUListElement>>;
-declare const PaginationItem: React.ForwardRefExoticComponent<Omit<React.DetailedHTMLProps<React.LiHTMLAttributes<HTMLLIElement>, HTMLLIElement>, "ref"> & React.RefAttributes<HTMLLIElement>>;
+declare const PaginationContent: {
+    ({ className, ...props }: React.ComponentPropsWithRef<"ul">): import("react/jsx-runtime").JSX.Element;
+    displayName: string;
+};
+declare const PaginationItem: {
+    ({ className, ...props }: React.ComponentPropsWithRef<"li">): import("react/jsx-runtime").JSX.Element;
+    displayName: string;
+};
 type PaginationLinkProps = {
     isActive?: boolean;
-    size: 'default' | 'sm' | 'large' | 'icon';
-} & React.ComponentProps<'a'>;
+    size: "default" | "sm" | "large" | "icon";
+} & React.ComponentPropsWithRef<"a">;
 declare const PaginationLink: {
     ({ isActive, size, className, ...props }: PaginationLinkProps): import("react/jsx-runtime").JSX.Element;
     displayName: string;
 };
 declare const PaginationPrevious: {
-    ({ className, ...props }: React.ComponentProps<typeof PaginationLink>): import("react/jsx-runtime").JSX.Element;
+    ({ className, ...props }: React.ComponentPropsWithRef<typeof PaginationLink>): import("react/jsx-runtime").JSX.Element;
     displayName: string;
 };
 declare const PaginationNext: {
-    ({ className, ...props }: React.ComponentProps<typeof PaginationLink>): import("react/jsx-runtime").JSX.Element;
+    ({ className, ...props }: React.ComponentPropsWithRef<typeof PaginationLink>): import("react/jsx-runtime").JSX.Element;
     displayName: string;
 };
 declare const PaginationEllipsis: {
-    ({ className, ...props }: React.ComponentProps<"span">): import("react/jsx-runtime").JSX.Element;
+    ({ className, ...props }: React.ComponentPropsWithRef<"span">): import("react/jsx-runtime").JSX.Element;
     displayName: string;
 };
 export { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious, };

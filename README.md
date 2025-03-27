@@ -19,6 +19,7 @@ npm install nc-ai-frontend-radix-ui
 각 컴포넌트는 React 컴포넌트 형태로 제공됩니다.
 
 ```typescript jsx
+
 ```
 
 ## 컴포넌트 목록
@@ -32,7 +33,7 @@ npm install nc-ai-frontend-radix-ui
 - Avatar(제공하지 않음): https://www.radix-ui.com/primitives/docs/components/avatar
 - Checkbox: https://www.radix-ui.com/primitives/docs/components/checkbox
 - Collapsible(제공하지 않음): https://www.radix-ui.com/primitives/docs/components/collapsible
-- Context Menu: https://www.radix-ui.com/primitives/docs/components/context-menu
+- Context Menu(제공하지 않음): https://www.radix-ui.com/primitives/docs/components/context-menu
 - Dialog: https://www.radix-ui.com/primitives/docs/components/dialog
 - Dropdown Menu: https://www.radix-ui.com/primitives/docs/components/dropdown-menu
 - Form(제공하지 않음): https://www.radix-ui.com/primitives/docs/components/form
@@ -52,7 +53,7 @@ npm install nc-ai-frontend-radix-ui
 - Toast: https://www.radix-ui.com/primitives/docs/components/toast
 - Toggle: https://www.radix-ui.com/primitives/docs/components/toggle
 - Toggle Group(제공하지 않음): https://www.radix-ui.com/primitives/docs/components/toggle-group
-- Toolbar: https://www.radix-ui.com/primitives/docs/components/toolbar
+- Toolbar(제공하지 않음): https://www.radix-ui.com/primitives/docs/components/toolbar
 - Tooltip: https://www.radix-ui.com/primitives/docs/components/tooltip
 
 ## 문의사항

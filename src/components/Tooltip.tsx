@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import * as React from 'react';
-import * as TooltipPrimitive from '@radix-ui/react-tooltip';
-import { cn, prefix } from '@react-monorepo/ui';
+import * as React from "react";
+import * as TooltipPrimitive from "@radix-ui/react-tooltip";
+import { cn, prefix } from "@";
 
 const TooltipProvider = TooltipPrimitive.Provider;
 
@@ -13,17 +13,19 @@ const TooltipPortal = TooltipPrimitive.Portal;
 
 const TooltipArrow = TooltipPrimitive.Arrow;
 
-const TooltipContent = React.forwardRef<
-  HTMLDivElement,
-  React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Content>
->(({ className, sideOffset = 4, ...props }, ref) => (
+const TooltipContent = ({
+  sideOffset = 4,
+  className,
+  ref,
+  ...props
+}: React.ComponentPropsWithRef<typeof TooltipPrimitive.Content>) => (
   <TooltipPrimitive.Content
     ref={ref}
     sideOffset={sideOffset}
-    className={cn(prefix + 'tooltip-content', className)}
+    className={cn(prefix + "tooltip-content", className)}
     {...props}
   />
-));
+);
 TooltipContent.displayName = TooltipPrimitive.Content.displayName;
 
 type CustomProps = {
@@ -57,10 +59,10 @@ const Tooltip = ({
       <TooltipPortal>
         <TooltipContent
           {...props}
-          className={cn(prefix + 'tooltip', className)}
+          className={cn(prefix + "tooltip", className)}
         >
           <p>{text}</p>
-          {arrow && <TooltipArrow className={prefix + 'tooltip-arrow'} />}
+          {arrow && <TooltipArrow className={prefix + "tooltip-arrow"} />}
         </TooltipContent>
       </TooltipPortal>
     </TooltipRoot>

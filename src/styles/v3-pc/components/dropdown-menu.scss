@@ -12,6 +12,9 @@
 /* 그룹 제목 */
 .design-dropdown-menu-label {
   @include list-item-label;
+  & {
+    margin-bottom: 0px;
+  }
 }
 /*  그룹 구분선 */
 .design-dropdown-menu-separator {

@@ -338,3 +338,92 @@ $button-types: (
     }
   }
 }
+
+/* icon button */
+$icon-button-sizes: (
+  xsmall: (
+    button-size: 14px,
+    icon-size: 12px,
+  ),
+  small: (
+    button-size: 16px,
+    icon-size: 14px,
+  ),
+  medium: (
+    button-size: 18px,
+    icon-size: 16px,
+  ),
+  large: (
+    button-size: 20px,
+    icon-size: 18px,
+  ),
+  xlarge: (
+    button-size: 26px,
+    icon-size: 24px,
+  ),
+  xxlarge: (
+    button-size: 32px,
+    icon-size: 30px,
+  ),
+);
+
+@mixin apply-icon-button-size($size) {
+  @if map.has-key($icon-button-sizes, $size) {
+    $size-map: map.get($icon-button-sizes, $size);
+    width: map.get($size-map, button-size);
+    height: map.get($size-map, button-size);
+
+    svg {
+      width: map.get($size-map, icon-size);
+      height: map.get($size-map, icon-size);
+    }
+  }
+}
+
+@mixin icon-unfilled($color) {
+  &:not(:disabled) {
+    &:hover,
+    &[data-state='on'] {
+      color: hover-overlay($color, var(--Interaction-Surface, #000), 0.14);
+    }
+
+    &[data-active='true'],
+    &:active {
+      color: hover-overlay($color, var(--Interaction-Surface, #000), 0.14);
+    }
+  }
+}
+
+@mixin icon-filled($color) {
+  &:not(:disabled) {
+    &:hover,
+    &[data-state='on'] {
+      background-color: hover-overlay(
+        transparent,
+        var(--Interaction-Surface, #000),
+        0.02
+      );
+    }
+
+    &[data-active='true'],
+    &:active {
+      background-color: hover-overlay(
+        transparent,
+        var(--Interaction-Surface, #000),
+        0.02
+      );
+    }
+  }
+}
+
+@mixin apply-icon-button-styles($type, $color) {
+  @if $type == filled {
+    border-radius: var(--Radius-Small);
+    @include icon-filled($color);
+  } @else if $type == unfilled {
+    @include icon-unfilled($color);
+  } @else if $type == circle {
+    border-radius: var(--Radius-Round);
+    @include icon-filled($color);
+  }
+}

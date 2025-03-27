@@ -1,15 +1,15 @@
-'use client';
+"use client";
 
-import * as React from 'react';
-import * as TogglePrimitive from '@radix-ui/react-toggle';
-import { cn, prefix } from '@react-monorepo/ui';
+import * as React from "react";
+import * as TogglePrimitive from "@radix-ui/react-toggle";
+import { cn, prefix } from "@";
 
 const Toggle = ({
   className,
   ...props
-}: React.ComponentProps<typeof TogglePrimitive.Root>) => (
+}: React.ComponentPropsWithRef<typeof TogglePrimitive.Root>) => (
   <TogglePrimitive.Root
-    className={cn(prefix + 'toggle', className)}
+    className={cn(prefix + "toggle", className)}
     {...props}
   ></TogglePrimitive.Root>
 );

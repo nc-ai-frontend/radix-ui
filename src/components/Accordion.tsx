@@ -1,75 +1,82 @@
-'use client';
+"use client";
 
-import * as React from 'react';
-import { ReactNode } from 'react';
-import * as AccordionPrimitive from '@radix-ui/react-accordion';
-import { ChevronDownIcon } from '@radix-ui/react-icons';
-import { cn, prefix } from '@react-monorepo/ui';
+import * as React from "react";
+import { ReactNode } from "react";
+import * as AccordionPrimitive from "@radix-ui/react-accordion";
+import { ChevronDownIcon } from "@radix-ui/react-icons";
+import { cn, prefix } from "@";
 
 const AccordionRoot = AccordionPrimitive.Root;
 
-const AccordionItem = React.forwardRef<
-  HTMLDivElement,
-  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Item>
->(({ className, ...props }, ref) => (
+const AccordionItem = ({
+  className,
+  ref,
+  ...props
+}: React.ComponentPropsWithRef<typeof AccordionPrimitive.Item>) => (
   <AccordionPrimitive.Item
     ref={ref}
-    className={cn(prefix + 'accordion-item', className)}
+    className={cn(prefix + "accordion-item", className)}
     {...props}
   />
-));
-AccordionItem.displayName = 'AccordionItem';
+);
+AccordionItem.displayName = "AccordionItem";
 
-const AccordionTrigger = React.forwardRef<
-  HTMLButtonElement,
-  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Trigger>
->(({ children, className, ...props }, ref) => (
-  <AccordionPrimitive.Header className={prefix + 'accordion-primitive-header'}>
+const AccordionTrigger = ({
+  children,
+  className,
+  ref,
+  ...props
+}: React.ComponentPropsWithRef<typeof AccordionPrimitive.Trigger>) => (
+  <AccordionPrimitive.Header className={prefix + "accordion-primitive-header"}>
     <AccordionPrimitive.Trigger
       ref={ref}
-      className={cn(prefix + 'accordion-primitive-trigger', className)}
+      className={cn(prefix + "accordion-primitive-trigger", className)}
       {...props}
     >
-      <div className={cn(prefix + 'accordion-trigger-title', className)}>
+      <div className={cn(prefix + "accordion-trigger-title", className)}>
         {children}
       </div>
       <ChevronDownIcon
-        className={cn(prefix + 'chevron-down-icon', className)}
+        className={cn(prefix + "chevron-down-icon", className)}
       />
     </AccordionPrimitive.Trigger>
   </AccordionPrimitive.Header>
-));
+);
 
 AccordionTrigger.displayName = AccordionPrimitive.Trigger.displayName;
 
-const AccordionContent = React.forwardRef<
-  HTMLDivElement,
-  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Content>
->(({ children, className, ...props }, ref) => (
+const AccordionContent = ({
+  children,
+  className,
+  ref,
+  ...props
+}: React.ComponentPropsWithRef<typeof AccordionPrimitive.Content>) => (
   <AccordionPrimitive.Content
     ref={ref}
-    className={cn(prefix + 'accordion-primitive-content', className)}
+    className={cn(prefix + "accordion-primitive-content", className)}
     {...props}
   >
-    <div className={cn(prefix + 'accordion-content-div', className)}>
+    <div className={cn(prefix + "accordion-content-div", className)}>
       {children}
     </div>
   </AccordionPrimitive.Content>
-));
+);
 AccordionContent.displayName = AccordionPrimitive.Content.displayName;
 
-const Accordion = React.forwardRef<
-  HTMLDivElement,
-  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Root> & {
-    items: ({
-      trigger: ReactNode;
-      content: ReactNode;
-    } & AccordionPrimitive.AccordionItemProps)[];
-  }
->(({ className, items, ...props }, ref) => (
+const Accordion = ({
+  className,
+  items,
+  ref,
+  ...props
+}: React.ComponentPropsWithRef<typeof AccordionPrimitive.Root> & {
+  items: ({
+    trigger: ReactNode;
+    content: ReactNode;
+  } & AccordionPrimitive.AccordionItemProps)[];
+}) => (
   <AccordionPrimitive.Root
     ref={ref}
-    className={cn(prefix + 'accordion', className, props.orientation)}
+    className={cn(prefix + "accordion", className, props.orientation)}
     {...props}
   >
     {items.map(({ trigger, content, ...itemProps }, index) => (
@@ -79,8 +86,8 @@ const Accordion = React.forwardRef<
       </AccordionItem>
     ))}
   </AccordionPrimitive.Root>
-));
-Accordion.displayName = 'Accordion';
+);
+Accordion.displayName = "Accordion";
 
 export {
   Accordion,

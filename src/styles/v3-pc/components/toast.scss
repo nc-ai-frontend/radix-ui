@@ -1,5 +1,5 @@
-$color_1: var(--color-max);
-$background-color_1: var(--color-min);
+$color_1: var(--Color-Max);
+$background-color_1: var(--Color-Min);
 
 @keyframes slide-in {
   from {
@@ -59,13 +59,13 @@ $background-color_1: var(--color-min);
   background: var(--Status-Positive, #006eff);
   color: var(--Static-White, #fff);
 
-  &[data-state='success'] {
+  &[data-state="success"] {
     background: var(--Status-Positive, #006eff);
   }
-  &[data-state='error'] {
+  &[data-state="error"] {
     background: var(--Status-Negative, #f33939);
   }
-  &[data-state='info'] {
+  &[data-state="info"] {
     background: var(--Static-Black, #000);
   }
 

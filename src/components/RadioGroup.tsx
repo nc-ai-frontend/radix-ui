@@ -1,42 +1,39 @@
-'use client';
+"use client";
 
-import * as React from 'react';
-import * as RadioGroupPrimitive from '@radix-ui/react-radio-group';
-import { Circle } from 'lucide-react';
-import { Label, cn, prefix } from '@react-monorepo/ui';
+import * as React from "react";
+import * as RadioGroupPrimitive from "@radix-ui/react-radio-group";
+import { Circle } from "lucide-react";
+import { Label, cn, prefix } from "@";
 
-const RadioGroupRoot = React.forwardRef<
-  HTMLDivElement,
-  React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Root>
->(({ ...props }, ref) => {
+const RadioGroupRoot = ({
+  ...props
+}: React.ComponentPropsWithRef<typeof RadioGroupPrimitive.Root>) => {
   return (
     <RadioGroupPrimitive.Root
       orientation={props.orientation}
-      className={cn(prefix + 'radio-group')}
+      className={cn(prefix + "radio-group")}
       {...props}
-      ref={ref}
     />
   );
-});
+};
 
-const RadioGroupItem = React.forwardRef<
-  HTMLButtonElement,
-  React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Item>
->(({ className, ...props }, ref) => {
+const RadioGroupItem = ({
+  className,
+  ...props
+}: React.ComponentPropsWithRef<typeof RadioGroupPrimitive.Item>) => {
   return (
     <RadioGroupPrimitive.Item
-      ref={ref}
-      className={cn(prefix + 'radio-group-item', className)}
+      className={cn(prefix + "radio-group-item", className)}
       {...props}
     >
       <RadioGroupPrimitive.Indicator
-        className={cn(prefix + 'radio-group-item-indicator')}
+        className={cn(prefix + "radio-group-item-indicator")}
       >
-        <Circle className={cn(prefix + 'circle', className)} stroke="none" />
+        <Circle className={cn(prefix + "circle", className)} stroke="none" />
       </RadioGroupPrimitive.Indicator>
     </RadioGroupPrimitive.Item>
   );
-});
+};
 RadioGroupItem.displayName = RadioGroupPrimitive.Item.displayName;
 
 type Props = RadioGroupPrimitive.RadioGroupProps & {
@@ -46,7 +43,7 @@ type Props = RadioGroupPrimitive.RadioGroupProps & {
 const RadioGroup = ({ className, items, ...props }: Props) => (
   <RadioGroupRoot {...props}>
     {items.map(({ label, id, ...item }) => (
-      <div className={prefix + 'radio-with-label'} key={item.value}>
+      <div className={prefix + "radio-with-label"} key={item.value}>
         <RadioGroupItem id={id} {...item} className={className} />
         <Label htmlFor={id}>{label ?? item.value}</Label>
       </div>

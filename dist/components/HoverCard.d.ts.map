@@ -1,1 +1,0 @@
-{"version":3,"file":"HoverCard.d.ts","sourceRoot":"","sources":["../../src/components/HoverCard.tsx"],"names":[],"mappings":"AAEA,OAAO,KAAK,KAAK,MAAM,OAAO,CAAC;AAC/B,OAAO,KAAK,kBAAkB,MAAM,4BAA4B,CAAC;AAGjE,QAAA,MAAM,aAAa,6CAA0B,CAAC;AAE9C,QAAA,MAAM,gBAAgB,oHAA6B,CAAC;AAEpD,QAAA,MAAM,gBAAgB,oKAWpB,CAAC;AAGH,OAAO,EAAE,aAAa,EAAE,gBAAgB,EAAE,gBAAgB,EAAE,CAAC"}

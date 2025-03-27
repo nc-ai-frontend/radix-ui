@@ -51,29 +51,9 @@
 * 아이콘 버튼 관련 시작
 */
 @mixin iconButton($options: ()) {
-  $buttonSize: map.get($options, 'buttonSize') or 36px; // 버튼 사이즈
-  $iconSize: map.get($options, 'iconSize') or 16px; // 아이콘 사이즈
-  $borderRadius: map.get($options, 'borderRadius') or 6px; // 보더 래디우스
-
-  $defaultBgColor: map.get($options, 'defaultBgColor') or transparent; // 기본 배경색
-  $defaultLineColor: map.get($options, 'defaultLineColor') or $defaultBgColor; // 기본 라인색
-  $defaultBgOpacity: map.get($options, 'defaultBgOpacity') or 0; // 기본 배경투명도
-  $defaultIconColor: map.get($options, 'defaultIconColor') or
-    var(--Colors-Grey-900); // 기본 아이콘색
-
-  $hoverBgColor: map.get($options, 'hoverBgColor') or var(--Colors-Grey-900); // 오버 배경색
-  $hoverLineColor: map.get($options, 'hoverLineColor') or $hoverBgColor; // 오버 라인색
-  $hoverBgOpacity: map.get($options, 'hoverBgOpacity') or 0.07; // 오버 배경투명도
-  $hoverIconColor: map.get($options, 'hoverIconColor') or var(--Colors-Grey-900); // 오버 아이콘색
-
-  $activeBgColor: map.get($options, 'activeBgColor') or $hoverBgColor; // 활성 배경색
-  $activeLineColor: map.get($options, 'activeLineColor') or $activeBgColor; // 활성 라인색
-  $activeIconColor: map.get($options, 'activeIconColor') or
-    var(--Colors-Blue-400); // 활성 아이콘색
-
-  $disabledBgOpacity: map.get($options, 'disabledBgOpacity') or 1; // 비활성 배경투명도
-  $disabledIconColor: map.get($options, 'disabledIconColor') or
-    var(--Colors-Grey-400); // 비활성 아이콘색
+  $type: map.get($options, 'type') or 'filled'; // 아이콘 종류: normal, filled, unfilled, circle
+  $size: map.get($options, 'size') or 'large'; // 사이즈: xsmall, small, medium, large, xlarge, xxlarge
+  $color: map.get($options, 'color') or var(--Refine-Primary); // 아이콘 색상
 
   // 기본
   z-index: 0;
@@ -81,59 +61,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: $buttonSize;
-  height: $buttonSize;
   transition: all 0.2s;
-  &:before {
-    z-index: -1;
-    position: absolute;
-    inset: 0;
-    background-color: $defaultBgColor;
-    border: 1px solid $defaultLineColor;
-    border-radius: $borderRadius;
-    opacity: $defaultBgOpacity;
-    transition: all 0.2s;
-    content: '';
-  }
-  .icon {
-    width: $iconSize;
-    height: $iconSize;
-    color: $defaultIconColor;
-    transition: all 0.2s;
-  }
-  // 오버
-  &:hover {
-    &:before {
-      background-color: $hoverBgColor;
-      border-color: $hoverLineColor;
-      opacity: $hoverBgOpacity;
-    }
-    .icon {
-      color: $hoverIconColor;
-    }
-  }
-  // 활성
-  &[data-active='true'] {
-    &:before {
-      background-color: $activeBgColor;
-      border-color: $activeLineColor;
-      opacity: $hoverBgOpacity;
-    }
-    .icon {
-      color: $activeIconColor;
-    }
-  }
-  // 비활성
+  color: $color;
   &:disabled {
-    &:before {
-      background-color: $defaultBgColor;
-      border-color: $defaultLineColor;
-      opacity: $disabledBgOpacity;
-    }
-    .icon {
-      color: $disabledIconColor;
-    }
+    color: var(--Interaction-Disabled);
+    pointer-events: none;
   }
+
+  // ./buttons.scss 참고
+  @include apply-icon-button-size($size);
+  @include apply-icon-button-styles($type, $color);
 }
 
 /**
@@ -247,7 +184,6 @@
 */
 @mixin list-item-wrapper-content {
   z-index: 50;
-  min-width: 200px;
   overflow-x: hidden;
   overflow-y: auto;
 
@@ -316,7 +252,7 @@
   padding: 6px 8px;
   outline: none;
   color: var(--Label-Primary);
-  transition: all 0.15s ease-in-out;
+  transition: background-color 0.15s ease-in-out;
   cursor: pointer;
 
   &:hover {
@@ -328,7 +264,7 @@
     height: 20px;
     flex-shrink: 0;
   }
-  @include text-style-body-m-14-r();
+  @include body-m-r;
 
   &[data-disabled] {
     @include list-item-disabled;
@@ -352,7 +288,6 @@
   svg {
     height: 20px;
     width: 20px;
-    fill: currentcolor;
   }
   span:has(> svg) {
     display: inline-flex;
@@ -372,7 +307,7 @@
   margin-bottom: 4px;
   padding: 4px 8px 2px 8px;
   color: var(--Label-Quaternary);
-  @include text-style-caption-m-12-r();
+  @include caption-m-r;
 }
 
 @mixin list-item-separator {
@@ -398,8 +333,7 @@
 @mixin list-item-shortcut {
   margin-left: auto;
   color: var(--Label-Tertiary);
-  // TODO
-  @include text-style-caption-m-12-r();
+  @include caption-l-r;
 }
 
 /**
@@ -663,29 +597,29 @@
 }
 
 @mixin elevation-10 {
-  box-shadow: 0px 3px 6px #000000;
+  box-shadow: 0px 3px 6px var(--Elevation-10, #0000005c);
 }
 @mixin elevation-20 {
-  box-shadow: 0px 4px 8px #000000;
+  box-shadow: 0px 4px 8px var(--Elevation-20, #0000005c);
 }
 @mixin elevation-30 {
-  box-shadow: 0px 6px 11px #000000;
+  box-shadow: 0px 6px 11px var(--Elevation-30, #00000054);
 }
 @mixin elevation-40 {
-  box-shadow: 0px 8px 14px #000000;
+  box-shadow: 0px 8px 14px var(--Elevation-40, #0000004d);
 }
 @mixin elevation-blur-10 {
   backdrop-filter: blur(8px);
-  box-shadow: 0px 2px 6px #000000;
+  box-shadow: 0px 2px 6px var(--Elevation-10, #0000005c);
 }
 @mixin elevation-blur-20 {
   backdrop-filter: blur(8px);
-  box-shadow: 0px 4px 9px #000000;
+  box-shadow: 0px 4px 9px var(--Elevation-20, #0000005c);
 }
 @mixin elevation-blur-30 {
   backdrop-filter: blur(8px);
-  box-shadow: 0px 6px 18px #000000;
+  box-shadow: 0px 6px 18px var(--Elevation-30, #00000054);
 }
 @mixin elevation-blur-40 {
-  box-shadow: 0px 8px 20px #000000;
+  box-shadow: 0px 8px 20px var(--Elevation-40, #0000004d);
 }

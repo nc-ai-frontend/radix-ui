@@ -1,90 +1,84 @@
-'use client';
+"use client";
 
-import * as React from 'react';
-import * as ToastPrimitives from '@radix-ui/react-toast';
-import { X } from 'lucide-react';
-import { cn, prefix } from '@react-monorepo/ui';
+import * as React from "react";
+import * as ToastPrimitives from "@radix-ui/react-toast";
+import { X } from "lucide-react";
+import { cn, prefix } from "@";
 
 const ToastProvider = ToastPrimitives.Provider;
 
-const ToastViewport = React.forwardRef<
-  HTMLOListElement,
-  React.ComponentPropsWithoutRef<typeof ToastPrimitives.Viewport>
->(({ className, ...props }, ref) => (
+const ToastViewport = ({
+  className,
+  ...props
+}: React.ComponentPropsWithRef<typeof ToastPrimitives.Viewport>) => (
   <ToastPrimitives.Viewport
-    ref={ref}
-    className={cn(prefix + 'toast-viewport', className)}
+    className={cn(prefix + "toast-viewport", className)}
     {...props}
   />
-));
+);
 ToastViewport.displayName = ToastPrimitives.Viewport.displayName;
 
-const Toast = React.forwardRef<
-  HTMLLIElement,
-  React.ComponentPropsWithoutRef<typeof ToastPrimitives.Root>
->(({ className, ...props }, ref) => {
+const Toast = ({
+  className,
+  ...props
+}: React.ComponentPropsWithRef<typeof ToastPrimitives.Root>) => {
   return (
     <ToastPrimitives.Root
-      ref={ref}
-      className={cn(prefix + 'toast-root', className)}
+      className={cn(prefix + "toast-root", className)}
       {...props}
     />
   );
-});
+};
 Toast.displayName = ToastPrimitives.Root.displayName;
 
-const ToastAction = React.forwardRef<
-  HTMLButtonElement,
-  React.ComponentPropsWithoutRef<typeof ToastPrimitives.Action>
->(({ className, ...props }, ref) => (
+const ToastAction = ({
+  className,
+  ...props
+}: React.ComponentPropsWithRef<typeof ToastPrimitives.Action>) => (
   <ToastPrimitives.Action
-    ref={ref}
-    className={cn(prefix + 'toast-action', className)}
+    className={cn(prefix + "toast-action", className)}
     {...props}
   />
-));
+);
 ToastAction.displayName = ToastPrimitives.Action.displayName;
 
-const ToastClose = React.forwardRef<
-  HTMLButtonElement,
-  React.ComponentPropsWithoutRef<typeof ToastPrimitives.Close>
->(({ className, ...props }, ref) => (
+const ToastClose = ({
+  className,
+  ...props
+}: React.ComponentPropsWithRef<typeof ToastPrimitives.Close>) => (
   <ToastPrimitives.Close
-    ref={ref}
-    className={cn(prefix + 'toast-close', className)}
+    className={cn(prefix + "toast-close", className)}
     toast-close=""
     {...props}
   >
     <X />
   </ToastPrimitives.Close>
-));
+);
 ToastClose.displayName = ToastPrimitives.Close.displayName;
 
-const ToastTitle = React.forwardRef<
-  HTMLDivElement,
-  React.ComponentPropsWithoutRef<typeof ToastPrimitives.Title>
->(({ className, ...props }, ref) => (
+const ToastTitle = ({
+  className,
+  ...props
+}: React.ComponentPropsWithRef<typeof ToastPrimitives.Title>) => (
   <ToastPrimitives.Title
-    ref={ref}
-    className={cn(prefix + 'toast-title', className)}
+    className={cn(prefix + "toast-title", className)}
     {...props}
   />
-));
+);
 ToastTitle.displayName = ToastPrimitives.Title.displayName;
 
-const ToastDescription = React.forwardRef<
-  HTMLDivElement,
-  React.ComponentPropsWithoutRef<typeof ToastPrimitives.Description>
->(({ className, ...props }, ref) => (
+const ToastDescription = ({
+  className,
+  ...props
+}: React.ComponentPropsWithRef<typeof ToastPrimitives.Description>) => (
   <ToastPrimitives.Description
-    ref={ref}
-    className={cn(prefix + 'toast-description', className)}
+    className={cn(prefix + "toast-description", className)}
     {...props}
   />
-));
+);
 ToastDescription.displayName = ToastPrimitives.Description.displayName;
 
-type ToastProps = React.ComponentPropsWithoutRef<typeof Toast>;
+type ToastProps = React.ComponentPropsWithRef<typeof Toast>;
 
 type ToastActionElement = React.ReactElement<typeof ToastAction>;
 

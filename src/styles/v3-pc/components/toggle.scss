@@ -1,21 +1,9 @@
-@mixin toggle-color($color: var(--Refine-Accent)) {
-  transition: color 150ms ease-in-out;
-  color: $color;
-  &:hover,
-  &[data-state='on'] {
-    color: color-mix(in srgb, $color, var(--Interaction-Surface) 14%);
-  }
-  &:disabled {
-    color: var(--Interaction-Disabled);
-  }
-}
+@use '../common/mixin' as *;
 
 .design-toggle {
-  width: 32px;
-  height: 32px;
-  @include toggle-color();
-}
-
-.design-toggle[data-color='StaticBlack'] {
-  @include toggle-color(var(--Static-black));
+  @include iconButton(
+    (
+      type: unfilled,
+    )
+  );
 }

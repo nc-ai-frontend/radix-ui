@@ -3,7 +3,7 @@ $color_2: currentColor;
 $background-color_1: transparent;
 $background-color_2: var(--Static-Primary, #006eff);
 $border_radius: var(--Radius-XSmall, 2px);
-$border-color: var(--Colors-Grey-900);
+$border-color: var(--Refine-Quaternary);
 $border-width: 1.4px;
 
 .design-checkbox {
@@ -28,7 +28,7 @@ $border-width: 1.4px;
 
   &:disabled {
     cursor: not-allowed;
-    opacity: 0.5;
+    border: $border-width solid var(--Interaction-Disabled);
   }
 }
 
@@ -39,23 +39,25 @@ $border-width: 1.4px;
 }
 
 .design-checkbox-indicator {
+  color: $color_2;
+  box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: $color_2;
+  margin: 0 auto;
+  padding: 4.67px 3.33px;
+
+  &.small {
+    padding: 3.5px 2.5px;
+  }
+
+  &.medium {
+    padding: 4.67px 3.33px;
+  }
 
   .design-checkbox-check {
-    width: 9.33px;
-    height: 6.67px;
-
-    &.small {
-      width: 7px;
-      height: 5px;
-    }
-
-    &.medium {
-      width: 9.33px;
-      height: 6.67px;
-    }
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
   }
 }

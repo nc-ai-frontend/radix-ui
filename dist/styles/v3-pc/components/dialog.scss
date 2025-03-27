@@ -12,7 +12,8 @@
 
 // 콘텐츠
 .design-dialog-content {
-  border-radius: 12px;
+  border-radius: var(--Radius-Large);
+  background-color: var(--Fill-Surface-Primary);
 
   position: fixed;
   max-height: 100vh;
@@ -25,7 +26,7 @@
   top: 50%;
   transform: translate(-50%, -50%);
   margin: auto;
-  padding: 48px 24px 24px 24px;
+  padding: 28px 28px 24px 28px;
   animation: content-show 150ms ease-in;
 
   &:focus {
@@ -33,29 +34,12 @@
   }
 
   // 닫기 버튼
-  .design-dialog-content-close {
+  > .design-dialog-close {
     @include iconButton;
     & {
       position: absolute;
-      right: 1rem;
-      top: 1rem;
-
-      opacity: 0.7;
-      transition: opacity 0.3s ease;
-    }
-
-    &:hover,
-    &:focus {
-      opacity: 1;
-    }
-
-    &:disabled {
-      pointer-events: none;
-    }
-
-    &[data-state='open'] {
-      color: var(--color-grey-500);
-      background-color: var(--color-grey-800);
+      right: 16px;
+      top: 16px;
     }
   }
 }
@@ -64,13 +48,8 @@
 .design-dialog-header {
   display: flex;
   flex-direction: column;
-  gap: 5px;
-  text-align: center;
-  margin-bottom: 20px;
-
-  @media (min-width: 640px) {
-    text-align: left;
-  }
+  gap: 12px;
+  text-align: left;
 }
 
 // 푸터
@@ -80,14 +59,16 @@
   min-width: 398px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 24px;
+  justify-content: flex-end;
+  gap: 8px;
+}
 
-  @media (min-width: 640px) {
-    flex-direction: row;
-    justify-content: flex-end;
-  }
+.design-dialog-close-cancel {
+  @include button('medium', 'tertiary', 'filled');
+}
+
+.design-dialog-close-action {
+  @include button('medium', 'primary', 'filled');
 }
 
 @keyframes content-show {
@@ -99,4 +80,15 @@
     opacity: 1;
     transform: translate(-50%, -50%) scale(1);
   }
+}
+
+.design-dialog-title {
+  color: var(--Label-Primary);
+  @include title-s-sb;
+}
+
+.design-dialog-description {
+  color: var(--Label-Secondary);
+  white-space: pre-wrap;
+  @include body-l-r;
 }

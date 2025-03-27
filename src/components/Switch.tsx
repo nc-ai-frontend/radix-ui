@@ -1,22 +1,18 @@
-'use client';
+"use client";
 
-import * as React from 'react';
-import * as SwitchPrimitives from '@radix-ui/react-switch';
-import { cn, prefix } from '@react-monorepo/ui';
+import * as React from "react";
+import * as SwitchPrimitives from "@radix-ui/react-switch";
+import { cn, prefix } from "@";
 
-const Switch = (
-  {
-    className,
-    ...props
-  }: React.ComponentPropsWithoutRef<typeof SwitchPrimitives.Root>,
-  ref: React.Ref<HTMLButtonElement>,
-) => (
+const Switch = ({
+  className,
+  ...props
+}: React.ComponentPropsWithRef<typeof SwitchPrimitives.Root>) => (
   <SwitchPrimitives.Root
-    className={cn(prefix + 'switch', className)}
+    className={cn(prefix + "switch", className)}
     {...props}
-    ref={ref}
   >
-    <SwitchPrimitives.Thumb className={cn(prefix + 'switch-thumb')} />
+    <SwitchPrimitives.Thumb className={cn(prefix + "switch-thumb")} />
   </SwitchPrimitives.Root>
 );
 Switch.displayName = SwitchPrimitives.Root.displayName;

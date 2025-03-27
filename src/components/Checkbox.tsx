@@ -1,24 +1,24 @@
-'use client';
+"use client";
 
-import * as React from 'react';
-import * as CheckboxPrimitive from '@radix-ui/react-checkbox';
-import { Check } from 'lucide-react';
-import { cn, prefix } from '@react-monorepo/ui';
+import * as React from "react";
+import * as CheckboxPrimitive from "@radix-ui/react-checkbox";
+import { Check } from "lucide-react";
+import { cn, prefix } from "@";
 
-const Checkbox = (
-  {
-    className,
-    ...props
-  }: React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root>,
-  ref: React.Ref<HTMLButtonElement>,
-) => (
+const Checkbox = ({
+  className,
+  ref,
+  ...props
+}: React.ComponentPropsWithRef<typeof CheckboxPrimitive.Root>) => (
   <CheckboxPrimitive.Root
     ref={ref}
-    className={cn(prefix + 'checkbox', className)}
+    className={cn(prefix + "checkbox", className)}
     {...props}
   >
-    <CheckboxPrimitive.Indicator className={cn(prefix + 'checkbox-indicator')}>
-      <Check className={cn(prefix + 'checkbox-check', className)} />
+    <CheckboxPrimitive.Indicator
+      className={cn(prefix + "checkbox-indicator", className)}
+    >
+      <Check className={cn(prefix + "checkbox-check", className)} />
     </CheckboxPrimitive.Indicator>
   </CheckboxPrimitive.Root>
 );

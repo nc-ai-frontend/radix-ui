@@ -1,33 +1,33 @@
-import * as React from 'react';
-import * as AlertDialogPrimitive from '@radix-ui/react-alert-dialog';
+import * as React from "react";
+import * as AlertDialogPrimitive from "@radix-ui/react-alert-dialog";
 declare const AlertDialogRoot: React.FC<AlertDialogPrimitive.AlertDialogProps>;
 declare const AlertDialogTrigger: React.ForwardRefExoticComponent<AlertDialogPrimitive.AlertDialogTriggerProps & React.RefAttributes<HTMLButtonElement>>;
 declare const AlertDialogPortal: React.FC<AlertDialogPrimitive.AlertDialogPortalProps>;
 declare const AlertDialogOverlay: {
-    ({ className, ...props }: React.ComponentProps<typeof AlertDialogPrimitive.Overlay>): import("react/jsx-runtime").JSX.Element;
+    ({ className, ...props }: React.ComponentPropsWithRef<typeof AlertDialogPrimitive.Overlay>): import("react/jsx-runtime").JSX.Element;
     displayName: string;
 };
 declare const AlertDialogContent: {
-    ({ className, ...props }: React.ComponentProps<typeof AlertDialogPrimitive.Content>): import("react/jsx-runtime").JSX.Element;
+    ({ className, ...props }: React.ComponentPropsWithRef<typeof AlertDialogPrimitive.Content>): import("react/jsx-runtime").JSX.Element;
     displayName: string;
 };
 declare const AlertDialogTitle: {
-    ({ className, ...props }: React.ComponentProps<typeof AlertDialogPrimitive.Title>): import("react/jsx-runtime").JSX.Element;
+    ({ className, ...props }: React.ComponentPropsWithRef<typeof AlertDialogPrimitive.Title>): import("react/jsx-runtime").JSX.Element;
     displayName: string;
 };
 declare const AlertDialogDescription: {
-    ({ className, ...props }: React.ComponentProps<typeof AlertDialogPrimitive.Description>): import("react/jsx-runtime").JSX.Element;
+    ({ className, ...props }: React.ComponentPropsWithRef<typeof AlertDialogPrimitive.Description>): import("react/jsx-runtime").JSX.Element;
     displayName: string;
 };
 declare const AlertDialogAction: {
-    ({ className, ...props }: React.ComponentProps<typeof AlertDialogPrimitive.Action>): import("react/jsx-runtime").JSX.Element;
+    ({ className, ...props }: React.ComponentPropsWithRef<typeof AlertDialogPrimitive.Action>): import("react/jsx-runtime").JSX.Element;
     displayName: string;
 };
 declare const AlertDialogCancel: {
-    ({ className, ...props }: React.ComponentProps<typeof AlertDialogPrimitive.Cancel>): import("react/jsx-runtime").JSX.Element;
+    ({ className, ...props }: React.ComponentPropsWithRef<typeof AlertDialogPrimitive.Cancel>): import("react/jsx-runtime").JSX.Element;
     displayName: string;
 };
-type Props = React.ComponentProps<'div'> & {};
+type Props = React.ComponentPropsWithRef<"div"> & {};
 declare const AlertDialogFooter: ({ children, ...props }: Props) => import("react/jsx-runtime").JSX.Element;
 type AlertDialogProps = {
     trigger: React.ReactNode;

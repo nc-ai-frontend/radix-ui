@@ -49,7 +49,7 @@ $border-radius_1: var(--Radius-round, 999999px);
   }
 
   .design-slider:not([data-disabled='true']) &:hover::before {
-    background-color: var(--Color-max);
+    background-color: var(--Color-Max);
     opacity: 0.14;
   }
 }

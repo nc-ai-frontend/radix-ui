@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import * as React from 'react';
-import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
+import * as React from "react";
+import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu";
 import {
   DropdownMenuContent,
   DropdownMenuGroup,
@@ -11,7 +11,7 @@ import {
   DropdownMenuRoot,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '@react-monorepo/ui';
+} from "@";
 
 type DropdownMenuItemProps = DropdownMenuPrimitive.DropdownMenuItemProps;
 
@@ -51,7 +51,7 @@ const DropdownMenu = ({ groups, ...props }: DropdownMenuProps) => {
   return (
     <DropdownMenuWrapper {...props}>
       {groups.map(({ items, label }, idx) => (
-        <div key={`group-${idx}`}>
+        <React.Fragment key={`group-${idx}`}>
           <DropdownMenuGroup>
             {label && <DropdownMenuLabel>{label}</DropdownMenuLabel>}
             {items.map((item, iidx) => (
@@ -61,7 +61,7 @@ const DropdownMenu = ({ groups, ...props }: DropdownMenuProps) => {
             ))}
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
-        </div>
+        </React.Fragment>
       ))}
     </DropdownMenuWrapper>
   );

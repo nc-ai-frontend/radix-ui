@@ -1,7 +1,10 @@
-import * as React from 'react';
-import * as RadioGroupPrimitive from '@radix-ui/react-radio-group';
-declare const RadioGroupRoot: React.ForwardRefExoticComponent<Omit<RadioGroupPrimitive.RadioGroupProps & React.RefAttributes<HTMLDivElement>, "ref"> & React.RefAttributes<HTMLDivElement>>;
-declare const RadioGroupItem: React.ForwardRefExoticComponent<Omit<RadioGroupPrimitive.RadioGroupItemProps & React.RefAttributes<HTMLButtonElement>, "ref"> & React.RefAttributes<HTMLButtonElement>>;
+import * as React from "react";
+import * as RadioGroupPrimitive from "@radix-ui/react-radio-group";
+declare const RadioGroupRoot: ({ ...props }: React.ComponentPropsWithRef<typeof RadioGroupPrimitive.Root>) => import("react/jsx-runtime").JSX.Element;
+declare const RadioGroupItem: {
+    ({ className, ...props }: React.ComponentPropsWithRef<typeof RadioGroupPrimitive.Item>): import("react/jsx-runtime").JSX.Element;
+    displayName: string;
+};
 type Props = RadioGroupPrimitive.RadioGroupProps & {
     items: (RadioGroupPrimitive.RadioGroupItemProps & {
         label?: string;

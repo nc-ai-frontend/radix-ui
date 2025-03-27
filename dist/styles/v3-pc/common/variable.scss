@@ -27,13 +27,13 @@
 
   --animation-duration: 400ms;
 
+  --Radius-XSmall: #{$radius-xsmall};
   --Radius-Small: #{$radius-small};
   --Radius-Medium: #{$radius-medium};
   --Radius-Large: #{$radius-large};
-  --Radius-Round: #{$radius-round};
-  --Radius-XSmall: #{$radius-xsmall};
   --Radius-XLarge: #{$radius-xlarge};
   --Radius-XXLarge: #{$radius-xxlarge};
+  --Radius-Round: #{$radius-round};
 
   --Colors-Blue-100: light-dark(
     #{$light-colors-blue-100},
@@ -455,7 +455,6 @@
     #{$dark-status-positive}
   );
 
-  // TODO : 변수명을 변경해야할 것 같음(Slider 컴포넌트를 위해 임의로 생성)
-  --Color-min: light-dark(#{rgb(255, 255, 255)}, #{rgb(0, 0, 0)});
-  --Color-max: light-dark(#{rgb(0, 0, 0)}, #{rgb(255, 255, 255)});
+  --Color-Min: light-dark(#{rgb(255, 255, 255)}, #{rgb(0, 0, 0)});
+  --Color-Max: light-dark(#{rgb(0, 0, 0)}, #{rgb(255, 255, 255)});
 }
