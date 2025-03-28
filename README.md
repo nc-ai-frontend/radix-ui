@@ -18,14 +18,14 @@ npm install nc-ai-frontend-radix-ui
 
 ### 스타일 추가
 
-```typescript jsx
+```tsx
 import 'nc-ai-frontend-ui-temp/dist/styles/v3-pc/common/index.scss';
 import 'nc-ai-frontend-ui-temp/dist/styles/v3-pc/components/index.scss';
 ```
 
 ### 래핑된 컴포넌트 사용
 
-```typescript jsx
+```tsx
 import { Checkbox } from 'nc-ai-frontend-ui-temp';
 
 function App() {
@@ -33,6 +33,22 @@ function App() {
     <>
       <Checkbox />
     </>
+  );
+}
+
+export default App;
+```
+
+### Radix Primitive 컴포넌트 사용
+
+```tsx
+import { Checkbox } from 'radix-ui';
+
+function App() {
+  return (
+    <Checkbox.Root className="CheckboxRoot" defaultChecked id="c1">
+      <Checkbox.Indicator className="CheckboxIndicator">v</Checkbox.Indicator>
+    </Checkbox.Root>
   );
 }
 
