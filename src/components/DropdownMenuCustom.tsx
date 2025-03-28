@@ -11,7 +11,7 @@ import {
   DropdownMenuRoot,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@";
+} from "@react-monorepo/ui";
 
 type DropdownMenuItemProps = DropdownMenuPrimitive.DropdownMenuItemProps;
 

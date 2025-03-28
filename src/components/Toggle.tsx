@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import * as TogglePrimitive from "@radix-ui/react-toggle";
-import { cn, prefix } from "@";
+import { cn, prefix } from "@react-monorepo/ui";
 
 const Toggle = ({
   className,

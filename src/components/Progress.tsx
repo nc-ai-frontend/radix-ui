@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import * as ProgressPrimitive from "@radix-ui/react-progress";
-import { cn, prefix } from "@";
+import { cn, prefix } from "@react-monorepo/ui";
 
 const Progress = ({
   value,

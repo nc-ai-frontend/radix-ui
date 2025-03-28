@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import * as ScrollAreaPrimitive from "@radix-ui/react-scroll-area";
-import { cn, prefix } from "@";
+import { cn, prefix } from "@react-monorepo/ui";
 
 const ScrollArea = ({
   children,

@@ -3,7 +3,7 @@
 import * as React from "react";
 import * as CheckboxPrimitive from "@radix-ui/react-checkbox";
 import { Check } from "lucide-react";
-import { cn, prefix } from "@";
+import { cn, prefix } from "@react-monorepo/ui";
 
 const Checkbox = ({
   className,

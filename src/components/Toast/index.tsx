@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import * as React from "react";
-import * as ToastPrimitives from "@radix-ui/react-toast";
-import { X } from "lucide-react";
-import { cn, prefix } from "@";
+import * as React from 'react';
+import * as ToastPrimitives from '@radix-ui/react-toast';
+import { X } from 'lucide-react';
+import { cn, prefix } from '@react-monorepo/ui';
 
 const ToastProvider = ToastPrimitives.Provider;
 
@@ -12,7 +12,7 @@ const ToastViewport = ({
   ...props
 }: React.ComponentPropsWithRef<typeof ToastPrimitives.Viewport>) => (
   <ToastPrimitives.Viewport
-    className={cn(prefix + "toast-viewport", className)}
+    className={cn(prefix + 'toast-viewport', className)}
     {...props}
   />
 );
@@ -24,7 +24,7 @@ const Toast = ({
 }: React.ComponentPropsWithRef<typeof ToastPrimitives.Root>) => {
   return (
     <ToastPrimitives.Root
-      className={cn(prefix + "toast-root", className)}
+      className={cn(prefix + 'toast-root', className)}
       {...props}
     />
   );
@@ -36,7 +36,7 @@ const ToastAction = ({
   ...props
 }: React.ComponentPropsWithRef<typeof ToastPrimitives.Action>) => (
   <ToastPrimitives.Action
-    className={cn(prefix + "toast-action", className)}
+    className={cn(prefix + 'toast-action', className)}
     {...props}
   />
 );
@@ -47,7 +47,7 @@ const ToastClose = ({
   ...props
 }: React.ComponentPropsWithRef<typeof ToastPrimitives.Close>) => (
   <ToastPrimitives.Close
-    className={cn(prefix + "toast-close", className)}
+    className={cn(prefix + 'toast-close', className)}
     toast-close=""
     {...props}
   >
@@ -61,7 +61,7 @@ const ToastTitle = ({
   ...props
 }: React.ComponentPropsWithRef<typeof ToastPrimitives.Title>) => (
   <ToastPrimitives.Title
-    className={cn(prefix + "toast-title", className)}
+    className={cn(prefix + 'toast-title', className)}
     {...props}
   />
 );
@@ -72,7 +72,7 @@ const ToastDescription = ({
   ...props
 }: React.ComponentPropsWithRef<typeof ToastPrimitives.Description>) => (
   <ToastPrimitives.Description
-    className={cn(prefix + "toast-description", className)}
+    className={cn(prefix + 'toast-description', className)}
     {...props}
   />
 );

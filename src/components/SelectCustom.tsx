@@ -13,7 +13,7 @@ import {
   SelectSeparator,
   SelectTrigger,
   SelectValue,
-} from "@";
+} from "@react-monorepo/ui";
 
 type SelectItemProps = SelectPrimitive.SelectItemProps & {
   text: string;

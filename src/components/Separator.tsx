@@ -1,7 +1,7 @@
 "use client";
 
 import * as SeparatorPrimitive from "@radix-ui/react-separator";
-import { cn, prefix } from "@";
+import { cn, prefix } from "@react-monorepo/ui";
 
 type SeparatorProps = SeparatorPrimitive.SeparatorProps & {};
 
