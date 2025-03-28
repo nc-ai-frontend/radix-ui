@@ -327,18 +327,34 @@ https://www.radix-ui.com/primitives/docs/components/switch
 https://www.radix-ui.com/primitives/docs/components/tabs
 
 ```tsx
-<TabsRoot defaultValue="account">
-  <TabsList>
-    <TabsTrigger value="account">Account</TabsTrigger>
-    <TabsTrigger value="password">Password</TabsTrigger>
-  </TabsList>
-  <TabsContent value="account">
+ <Tabs
+  defaultValue="account"
+  triggers={[
+    {
+      value: 'account',
+      children: <>Account</>,
+      style: { width: '125px' },
+    },
+    {
+      value: 'password',
+      children: <>Password</>,
+      style: { width: '125px' },
+    },
+    {
+      value: 'disabled',
+      children: <>Disabled</>,
+      style: { width: '125px' },
+      disabled: true,
+    },
+  ]}
+>
+  <TabsContent value="account" style={{ marginTop: '1rem' }}>
     This is tab content for "account"
   </TabsContent>
-  <TabsContent value="password">
+  <TabsContent value="password" style={{ marginTop: '1rem' }}>
     This is tab content for "password"
   </TabsContent>
-</TabsRoot>
+</Tabs>
 ```
 
 ### Toast
