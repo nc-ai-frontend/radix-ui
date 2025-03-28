@@ -113,30 +113,18 @@ https://www.radix-ui.com/primitives/docs/components/context-menu
 https://www.radix-ui.com/primitives/docs/components/dialog
 
 ```tsx
- const onCancel = () => {
-    alert('click cancel');
-  };
-
-  const onAction = () => {
-    alert('click action');
-  };
-
-  return (
-    <>
-      <Dialog
-        trigger={<button>Open Dialog</button>}
-        closeButton={true}
-        title={'Title'}
-        description={`Lorem Ipsum is simply dummy text of the printing and typesetting industry.`}
-        cancelLabel="Cancel"
-        actionLabel="Action"
-        onCancel={onCancel}
-        onAction={onAction}
-      >
-        <div>Custom Body</div>
-      </Dialog>
-    </>
-  );
+<Dialog
+  trigger={<button>Open Dialog</button>}
+  closeButton={true}
+  title={'Title'}
+  description={`Lorem Ipsum is simply dummy text of the printing and typesetting industry.`}
+  cancelLabel="Cancel"
+  actionLabel="Action"
+  onCancel={() => alert('click cancel')}
+  onAction={() => alert('click action')}
+>
+  <div>Custom Body</div>
+</Dialog>
 ```
 
 ### Dropdown Menu
