@@ -269,6 +269,37 @@ https://www.radix-ui.com/primitives/docs/components/scroll-area
 https://www.radix-ui.com/primitives/docs/components/select
 
 ```tsx
+<Select
+  width="180px"
+  placeholder={'Select Options'}
+  groups={[
+    {
+      label: 'Group Label1',
+      items: [
+        {
+          value: '1',
+          text: 'Option1',
+        },
+        {
+          value: '2',
+          text: 'Option2',
+        },
+        {
+          value: '3',
+          text: 'Option3',
+        },
+        ],
+        },
+        {
+          label: 'Group Label2',
+          items: [
+            { value: '4', text: 'Option4' },
+            { value: '5', text: 'Option5' },
+            { value: '6', text: 'Option6' },
+          ],
+        },
+  ]}
+/>
 ```
 
 ### Separator
