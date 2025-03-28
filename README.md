@@ -288,16 +288,16 @@ https://www.radix-ui.com/primitives/docs/components/select
           value: '3',
           text: 'Option3',
         },
-        ],
-        },
-        {
-          label: 'Group Label2',
-          items: [
-            { value: '4', text: 'Option4' },
-            { value: '5', text: 'Option5' },
-            { value: '6', text: 'Option6' },
-          ],
-        },
+      ],
+    },
+    {
+      label: 'Group Label2',
+      items: [
+        { value: '4', text: 'Option4' },
+        { value: '5', text: 'Option5' },
+        { value: '6', text: 'Option6' },
+       ],
+    },
   ]}
 />
 ```
