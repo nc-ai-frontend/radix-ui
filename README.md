@@ -11,7 +11,7 @@
 ## 설치
 
 ```bash
-npm install nc-ai-frontend-radix-ui
+npm install nc-ai-frontend-radix-ui radix-ui sass
 ```
 
 ## 사용법
