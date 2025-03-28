@@ -26,7 +26,7 @@ import 'nc-ai-frontend-ui-temp/dist/styles/v3-pc/components/index.scss';
 ### 래핑된 컴포넌트 사용
 
 ```tsx
-import { Checkbox } from 'nc-ai-frontend-ui-temp';
+import { Checkbox } from 'nc-ai-frontend-radix-ui';
 
 function App() {
   return (
