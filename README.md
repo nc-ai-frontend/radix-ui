@@ -57,11 +57,93 @@ export default App;
 
 ### 믹스인 사용
 
-```css
-$abc: #fff;
+mixin의 자세한한 사용법은 https://sass-lang.com/documentation/at-rules/mixin/ 를 참고해주세요.
 
-.test {
-  color: $abc;
+input은 따로 mixin, component가 없고 기본 css를 override하고 있습니다.
+
+#### button
+
+```scss
+$types: ("filled", "tonal", "outlined", "text");
+$sizes: ("medium", "small", "large");
+$variants: ("primary", "secondary", "tertiary", "negative");
+
+.some-button {
+  @include button("filled", "medium", "primary");
+  @include button($type: "filled", $size: "medium", $variant: "primary");
+}
+```
+
+#### list-style
+
+아래는 dropdown menu 스타일의 예입니다.  
+dropdown menu, context menu, menu bar에서 사용하시면 됩니다.
+
+```scss
+/* 메뉴 컨테이너 */
+.design-dropdown-menu-content {
+  @include list-item-wrapper-content;
+}
+
+/* 메뉴 그룹 */
+.design-dropdown-menu-group {
+  @include list-item-group;
+}
+/* 그룹 제목 */
+.design-dropdown-menu-label {
+  @include list-item-label;
+  & {
+    margin-bottom: 0px;
+  }
+}
+/*  그룹 구분선 */
+.design-dropdown-menu-separator {
+  @include list-item-separator;
+}
+.design-dropdown-menu-separator:last-child {
+  display: none;
+}
+
+/* 아이템 */
+.design-dropdown-menu-item {
+  @include list-item;
+}
+
+/* 우측 캡션 */
+.design-dropdown-menu-shortcut {
+  @include list-item-shortcut;
+}
+
+%has-icon-left {
+  position: absolute;
+  left: 8px;
+  display: flex;
+  height: 14px;
+  width: 14px;
+  align-items: center;
+  justify-content: center;
+}
+
+.design-dropdown-menu-checkbox-item,
+.design-dropdown-menu-radio-item {
+  @include list-item-has-left-icon;
+
+  &[data-disabled] {
+    opacity: 0.5;
+  }
+}
+
+.design-dropdown-menu-checkbox-item-span,
+.design-dropdown-menu-radio-item-span {
+  @include list-item-left-icon;
+}
+
+/* 서브 메뉴 */
+.design-dropdown-menu-sub-content {
+  @include list-item-wrapper-content;
+}
+.design-dropdown-menu-sub-trigger {
+  @include list-item-sub-trigger;
 }
 ```
 
