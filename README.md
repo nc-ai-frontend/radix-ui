@@ -320,9 +320,17 @@ https://www.radix-ui.com/primitives/docs/components/toolbar
 
 
 ### Tooltip
+
 https://www.radix-ui.com/primitives/docs/components/tooltip
 
 ```tsx
+<TooltipProvider>
+  <Tooltip text="Add to library">
+    <button className={styles.IconButton}>
+      <PlusIcon />
+    </button>
+  </Tooltip>
+</TooltipProvider>
 ```
 
 
