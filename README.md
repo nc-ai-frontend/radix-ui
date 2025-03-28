@@ -210,9 +210,16 @@ https://www.radix-ui.com/primitives/docs/components/radio-group
 ```
 
 ### Scroll Area
+
 https://www.radix-ui.com/primitives/docs/components/scroll-area
 
 ```tsx
+// height 지정해줘야 함
+<ScrollArea style={{ height: "100px", width: "200px" }}>
+  <div style={{ width: "100%", height: "1000px", background: "black" }}>
+    Whatever Contents You Want
+  </div>
+</ScrollArea>
 ```
 
 ### Select
