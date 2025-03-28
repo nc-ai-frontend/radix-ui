@@ -4,6 +4,7 @@
   @include iconButton(
     (
       type: unfilled,
+      color: var(--Refine-Accent),
     )
   );
 }

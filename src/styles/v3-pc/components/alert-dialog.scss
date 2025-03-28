@@ -51,8 +51,16 @@
 
 .design-alert-dialog-action {
   @include button();
+  &:focus-visible,
+  &:focus {
+    outline: none;
+  }
 }
 
 .design-alert-dialog-cancel {
   @include button('medium', 'tertiary');
+  &:focus-visible,
+  &:focus {
+    outline: none;
+  }
 }
