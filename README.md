@@ -308,9 +308,7 @@ https://www.radix-ui.com/primitives/docs/components/toast
 https://www.radix-ui.com/primitives/docs/components/toggle
 
 ```tsx
-<Toggle>
-  <BookmarkIcon />
-</Toggle>
+<Toggle>A</Toggle>
 ```
 
 ### Toggle Group(제공하지 않음)
