@@ -153,18 +153,13 @@ https://www.radix-ui.com/primitives/docs/components/dropdown-menu
     {
       label: 'Group 1',
       items: [
-        {
-          children: <span>Item</span>,
-        },
+        { children: <span>Item</span> },
       ],
     },
     {
       label: 'Group 2',
       items: [
-        {
-          children: <span>Disabled</span>,
-          disabled: true,
-        },
+        { children: <span>Disabled</span>, disabled: true },
       ],
     },
   ]}
@@ -231,18 +226,9 @@ https://www.radix-ui.com/primitives/docs/components/select
     {
       label: 'Group Label1',
       items: [
-        {
-          value: '1',
-          text: 'Option1',
-        },
-        {
-          value: '2',
-          text: 'Option2',
-        },
-        {
-          value: '3',
-          text: 'Option3',
-        },
+        { value: '1', text: 'Option1' },
+        { value: '2', text: 'Option2' },
+        { value: '3', text: 'Option3' },
       ],
     },
     {
@@ -251,7 +237,7 @@ https://www.radix-ui.com/primitives/docs/components/select
         { value: '4', text: 'Option4' },
         { value: '5', text: 'Option5' },
         { value: '6', text: 'Option6' },
-       ],
+      ],
     },
   ]}
 />
