@@ -412,10 +412,7 @@ export default function App() {
   // 앱 최상단에서 사용해주시면 됩니다.
   return (
     <>
-      <button
-        className={styles["toast-button"]}
-        onClick={handleToastButtonClick}
-      >
+      <button onClick={handleToastButtonClick}>
         Add to calendar
       </button>
       <Toaster />
@@ -446,7 +443,7 @@ https://www.radix-ui.com/primitives/docs/components/tooltip
 ```tsx
 <TooltipProvider>
   <Tooltip text="Add to library">
-    <button className={styles.IconButton}>
+    <button>
       <PlusIcon />
     </button>
   </Tooltip>
