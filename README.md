@@ -151,53 +151,19 @@ https://www.radix-ui.com/primitives/docs/components/dropdown-menu
   trigger={<button>Open DropdownMenu</button>}
   groups={[
     {
-      label: 'Group Label 1',
+      label: 'Group 1',
       items: [
         {
-          children: (
-            <>
-              <span>Item1</span>
-              <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
-            </>
-          ),
-        },
-        {
-          children: (
-            <>
-              <span>Item2</span>
-              <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
-            </>
-          ),
-        },
-        {
-          children: (
-            <>
-              <span>Item3</span>
-              <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
-            </>
-          ),
+          children: <span>Item</span>,
         },
       ],
     },
     {
-      label: 'Group Label 2',
+      label: 'Group 2',
       items: [
         {
-          children: (
-            <>
-              <span>Disabled</span>
-              <DropdownMenuShortcut>Ctrl [</DropdownMenuShortcut>
-            </>
-          ),
+          children: <span>Disabled</span>,
           disabled: true,
-        },
-        {
-          children: (
-            <>
-              <span>Item4</span>
-              <DropdownMenuShortcut>Ctrl ]</DropdownMenuShortcut>
-            </>
-          ),
         },
       ],
     },
