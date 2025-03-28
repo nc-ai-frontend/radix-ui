@@ -81,32 +81,13 @@ https://www.radix-ui.com/primitives/docs/components/accordion
 https://www.radix-ui.com/primitives/docs/components/alert-dialog
 
 ```tsx
-<AlertDialogRoot>
-  <AlertDialogTrigger asChild>
-    <button>Delete account</button>
-  </AlertDialogTrigger>
-  <AlertDialogContent>
-    <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-    <AlertDialogDescription>
-      This action cannot be undone. This will permanently delete your
-      account and remove your data from our servers.
-    </AlertDialogDescription>
-    <div
-      style={{
-        display: 'flex',
-        gap: 25,
-        justifyContent: 'flex-end',
-      }}
-    >
-      <AlertDialogCancel asChild>
-        <button>Cancel</button>
-      </AlertDialogCancel>
-      <AlertDialogAction asChild>
-        <button>Yes, delete account</button>
-      </AlertDialogAction>
-    </div>
-  </AlertDialogContent>
-</AlertDialogRoot>
+<AlertDialog
+  trigger={<button>커스텀 컴포넌트</button>}
+  title={'hello'}
+  description={`Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text`}
+  actionLabel="Action"
+  cancelLabel="Cancel"
+/>
 ```
 
 ### Aspect Ratio(제공하지 않음)
