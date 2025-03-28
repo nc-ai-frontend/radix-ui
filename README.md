@@ -299,9 +299,40 @@ https://www.radix-ui.com/primitives/docs/components/tabs
 ```
 
 ### Toast
+
 https://www.radix-ui.com/primitives/docs/components/toast
 
 ```tsx
+export default function App() {
+  const { toast } = useToast();
+  const handleToastButtonClick = () => {
+    toast({
+      text: "Title only",
+      duration: 3000,
+      close: true,
+      // state: error, success(default), info
+      state: "error",
+    });
+    toast({
+      text: "text",
+      action: <ToastAction altText="hi">hi</ToastAction>,
+    });
+  };
+
+  // Toaster 는 Toast의 Provider를 갖고 있습니다.
+  // 앱 최상단에서 사용해주시면 됩니다.
+  return (
+    <>
+      <button
+        className={styles["toast-button"]}
+        onClick={handleToastButtonClick}
+      >
+        Add to calendar
+      </button>
+      <Toaster />
+    </>
+  );
+}
 ```
 
 ### Toggle
