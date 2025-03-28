@@ -1,4 +1,5 @@
 export * from "./utils";
+export { useToast } from "./components/hooks/useToast";
 export { Accordion, AccordionContent, AccordionItem, AccordionRoot, AccordionTrigger, } from "./components/Accordion";
 export { AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogRoot, AlertDialogTitle, AlertDialogTrigger, AlertDialogPortal, AlertDialogOverlay, AlertDialogFooter, AlertDialog, } from "./components/AlertDialog";
 export { default as Checkbox } from "./components/Checkbox";
@@ -19,4 +20,5 @@ export { TabsRoot, TabsContent, TabsList, TabsTrigger, Tabs, } from "./component
 export { Toggle } from "./components/Toggle";
 export { Tooltip, TooltipArrow, TooltipContent, TooltipPortal, TooltipProvider, TooltipRoot, TooltipTrigger, } from "./components/Tooltip";
 export { Toast, ToastAction, ToastClose, ToastDescription, ToastProvider, ToastTitle, ToastViewport, type ToastActionElement, type ToastProps, } from "./components/Toast";
+export { Toaster } from "./components/Toast/Toaster";
 //# sourceMappingURL=index.d.ts.map

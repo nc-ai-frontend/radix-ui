@@ -1,6 +1,6 @@
 {
   "name": "nc-ai-frontend-ui-temp",
-  "version": "1.0.3",
+  "version": "1.0.8",
   "type": "module",
   "exports": {
     ".": {
@@ -11,7 +11,8 @@
     "./dist/styles/*": "./dist/styles/*"
   },
   "files": [
-    "dist"
+    "dist",
+    "assets"
   ],
   "scripts": {
     "build": "rm -rf dist && vite build && tsc --emitDeclarationOnly --declaration --outDir dist && cp -r src/styles dist"
@@ -44,13 +45,15 @@
     "@radix-ui/react-tooltip": "^1.1.7",
     "lucide-react": "^0.484.0",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "uuid": "^11.1.0"
   },
   "devDependencies": {
     "@types/node": "^22.13.13",
     "@types/react": "^19.0.12",
     "sass": "^1.86.0",
-    "typescript": "^5.8.2"
+    "typescript": "^5.8.2",
+    "vite": "^6.2.3"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"

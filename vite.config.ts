@@ -4,6 +4,7 @@ import path from "path";
 export default defineConfig({
   resolve: {
     alias: {
+      "@react-monorepo/ui": path.resolve(__dirname, "src"),
       "@": path.resolve(__dirname, "src"),
     },
   },
