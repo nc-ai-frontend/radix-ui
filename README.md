@@ -82,7 +82,7 @@ https://www.radix-ui.com/primitives/docs/components/alert-dialog
 
 ```tsx
 <AlertDialog
-  trigger={<button>커스텀 컴포넌트</button>}
+  trigger={<button>Open ALertDialog</button>}
   title={'hello'}
   description={`Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text`}
   actionLabel="Action"
@@ -113,29 +113,30 @@ https://www.radix-ui.com/primitives/docs/components/context-menu
 https://www.radix-ui.com/primitives/docs/components/dialog
 
 ```tsx
-<Dialog
-  id="abc"
-  trigger={<button>Dialog Button</button>}
-  modal={true}
-  closeButton={true}
-  titleText="This is header title text"
-  descriptionText="This is header descriptiont text."
-  footer={
-    <div>
-      <DialogClose asChild>
-        <button type="button">취소</button>
-      </DialogClose>
-      <button type="button">확인</button>
-    </div>
-  }
->
-  <div>
-    <p>
-      제공된 className은 모달 창에 상속됩니다. <br />
-      빨간 테두리는 기본 스타일링에 들어가있지 않습니다. <br />
-    </p>
-  </div>
-</Dialog>
+ const onCancel = () => {
+    alert('click cancel');
+  };
+
+  const onAction = () => {
+    alert('click action');
+  };
+
+  return (
+    <>
+      <Dialog
+        trigger={<button>Open Dialog</button>}
+        closeButton={true}
+        title={'Title'}
+        description={`Lorem Ipsum is simply dummy text of the printing and typesetting industry.`}
+        cancelLabel="Cancel"
+        actionLabel="Action"
+        onCancel={onCancel}
+        onAction={onAction}
+      >
+        <div>Custom Body</div>
+      </Dialog>
+    </>
+  );
 ```
 
 ### Dropdown Menu
