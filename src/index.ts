@@ -1,5 +1,7 @@
 export * from "./utils";
 
+export { useToast } from "./components/hooks/useToast";
+
 export {
   Accordion,
   AccordionContent,
@@ -131,3 +133,5 @@ export {
   type ToastActionElement,
   type ToastProps,
 } from "./components/Toast";
+
+export { Toaster } from "./components/Toast/Toaster";

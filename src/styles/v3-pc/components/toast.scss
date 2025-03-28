@@ -59,14 +59,32 @@ $background-color_1: var(--Color-Min);
   background: var(--Status-Positive, #006eff);
   color: var(--Static-White, #fff);
 
-  &[data-state="success"] {
+  &[data-status="success"] {
     background: var(--Status-Positive, #006eff);
   }
-  &[data-state="error"] {
+  &[data-status="error"] {
     background: var(--Status-Negative, #f33939);
   }
-  &[data-state="info"] {
+  &[data-status="info"] {
     background: var(--Static-Black, #000);
+  }
+
+  &[data-state="open"] {
+    animation: slide-in 150ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  &[data-state="closed"] {
+    animation: swipe-out 100ms ease-in;
+  }
+
+  &[data-swipe="move"] {
+    transform: translateX(var(--radix-toast-swipe-move-x));
+  }
+  &[data-swipe="cancel"] {
+    transform: translateX(0);
+    transition: transform 200ms ease-out;
+  }
+  &[data-swipe="end"] {
+    animation: swipe-out 100ms ease-out;
   }
 
   .action-wrapper {
