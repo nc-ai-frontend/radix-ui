@@ -147,77 +147,62 @@ https://www.radix-ui.com/primitives/docs/components/dialog
 https://www.radix-ui.com/primitives/docs/components/dropdown-menu
 
 ```tsx
-<DropdownMenuRoot>
-  <DropdownMenuTrigger asChild>
-    <button>Open</button>
-  </DropdownMenuTrigger>
-  <DropdownMenuContent className="w-56">
-    <DropdownMenuLabel>My Account</DropdownMenuLabel>
-    <DropdownMenuSeparator />
-    <DropdownMenuGroup>
-      <DropdownMenuItem>
-        <span>Profile</span>
-        <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
-      </DropdownMenuItem>
-      <DropdownMenuItem>
-        <span>Billing</span>
-        <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
-      </DropdownMenuItem>
-      <DropdownMenuItem>
-        <span>Settings</span>
-        <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
-      </DropdownMenuItem>
-      <DropdownMenuItem>
-        <span>Keyboard shortcuts</span>
-        <DropdownMenuShortcut>⌘K</DropdownMenuShortcut>
-      </DropdownMenuItem>
-    </DropdownMenuGroup>
-    <DropdownMenuSeparator />
-    <DropdownMenuGroup>
-      <DropdownMenuItem>
-        <span>Team</span>
-      </DropdownMenuItem>
-      <DropdownMenuSub>
-        <DropdownMenuSubTrigger>
-          <span>Invite users</span>
-        </DropdownMenuSubTrigger>
-        <DropdownMenuPortal>
-          <DropdownMenuSubContent>
-            <DropdownMenuItem>
-              <span>Email</span>
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              <span>Message</span>
-            </DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>
-              <span>More...</span>
-            </DropdownMenuItem>
-          </DropdownMenuSubContent>
-        </DropdownMenuPortal>
-      </DropdownMenuSub>
-      <DropdownMenuItem>
-        <span>New Team</span>
-        <DropdownMenuShortcut>⌘+T</DropdownMenuShortcut>
-      </DropdownMenuItem>
-    </DropdownMenuGroup>
-    <DropdownMenuSeparator />
-    <DropdownMenuItem>
-      <span>GitHub</span>
-    </DropdownMenuItem>
-    <DropdownMenuItem>
-      <span>Support</span>
-    </DropdownMenuItem>
-    <DropdownMenuItem disabled>
-      <span>API</span>
-    </DropdownMenuItem>
-    <DropdownMenuSeparator />
-    <DropdownMenuItem>
-      <span>Log out</span>
-      <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
-    </DropdownMenuItem>
-  </DropdownMenuContent>
-</DropdownMenuRoot>
+<DropdownMenu
+  trigger={<button>Open DropdownMenu</button>}
+  groups={[
+    {
+      label: 'Group Label 1',
+      items: [
+        {
+          children: (
+            <>
+              <span>Item1</span>
+              <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
+            </>
+          ),
+        },
+        {
+          children: (
+            <>
+              <span>Item2</span>
+              <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
+            </>
+          ),
+        },
+        {
+          children: (
+            <>
+              <span>Item3</span>
+              <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
+            </>
+          ),
+        },
+      ],
+    },
+    {
+      label: 'Group Label 2',
+      items: [
+        {
+          children: (
+            <>
+              <span>Disabled</span>
+              <DropdownMenuShortcut>Ctrl [</DropdownMenuShortcut>
+            </>
+          ),
+          disabled: true,
+        },
+        {
+          children: (
+            <>
+              <span>Item4</span>
+              <DropdownMenuShortcut>Ctrl ]</DropdownMenuShortcut>
+            </>
+          ),
+        },
+      ],
+    },
+  ]}
+/>
 ```
 
 ### Form(제공하지 않음)
