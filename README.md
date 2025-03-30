@@ -23,8 +23,8 @@ npm install nc-ai-frontend-radix-ui radix-ui sass
 ### 스타일 추가
 
 ```tsx
-import 'nc-ai-frontend-ui-temp/dist/styles/v3-pc/common/index.scss';
-import 'nc-ai-frontend-ui-temp/dist/styles/v3-pc/components/index.scss';
+import 'nc-ai-frontend-radix-ui/dist/styles/v3-pc/common/index.scss';
+import 'nc-ai-frontend-radix-ui/dist/styles/v3-pc/components/index.scss';
 ```
 
 ### 래핑된 컴포넌트 사용
