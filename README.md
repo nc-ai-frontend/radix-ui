@@ -8,11 +8,15 @@
 디자인 시스템 적용 사례를 공유하는 것이 주요 목적이며, 모든 디자인 시스템을 포함하거나 Radix의 모든 컴포넌트를 제공하지는 않습니다.  
 또한, Radix UI에서 제공하지 않는 컴포넌트는 필요에 따라 직접 개발하여 사용하는 것을 원칙으로 합니다.
 
+---
+
 ## 설치
 
 ```bash
 npm install nc-ai-frontend-radix-ui radix-ui sass
 ```
+
+---
 
 ## 사용법
 
@@ -55,33 +59,27 @@ function App() {
 export default App;
 ```
 
-### 믹스인 사용
-
-#### input, textarea
+### 기본 디자인 적용된 태그
 
 ``` scss
 input,
 textarea {
-  background-color: transparent;
+  margin: 0;
   outline: none;
   vertical-align: top;
-  margin: 0;
-
+  color: var(--Label-Primary, #171717);
   border: solid 1px var(--Line-Secondary, #e6e6e6);
   border-radius: var(--Radius-Small, 4px);
-  color: var(--Label-Primary, #171717);
+  background-color: transparent;
   caret-color: var(--Static-Primary, #006eff);
-
   @include body-m-r;
   &::placeholder {
     color: var(--Label-Quaternary, rgba(23, 23, 23, 0.4));
   }
-
   &:disabled {
     border: 1px solid var(--Line-Secondary, #e6e6e6);
     background: var(--Interaction-Disabled, rgba(56, 58, 58, 0.12));
   }
-
   &:not(:disabled) {
     &:hover {
       border-color: var(--Line-Primary, #cccccc);
@@ -93,20 +91,19 @@ textarea {
 }
 ```
 
-#### button
+### 버튼 믹스인
 
 ```scss
+/*
 $types: ("filled", "tonal", "outlined", "text");
 $sizes: ("medium", "small", "large");
 $variants: ("primary", "secondary", "tertiary", "negative");
+*/
 
-.some-button {
-  @include button("filled", "medium", "primary");
-}
-.another-button {
-  @include button($type: "filled", $size: "medium", $variant: "primary");
-}
+@include button($type: "filled", $size: "medium", $variant: "primary");
 ```
+
+---
 
 ## 컴포넌트 목록
 
@@ -128,9 +125,8 @@ https://www.radix-ui.com/primitives/docs/components/accordion
     },
     {
       trigger: 'Is it unstyled?',
-      content:
-        "Yes. It's unstyled by default, giving you freedom over the look and feel.",
-      value: '"item-2',
+      content: 'Yes. Its unstyled by default, giving you freedom over the look and feel.',
+      value: 'item-2',
     },
   ]}
 />
@@ -143,7 +139,7 @@ https://www.radix-ui.com/primitives/docs/components/alert-dialog
 <AlertDialog
   trigger={<button>Open ALertDialog</button>}
   title={'hello'}
-  description={`Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text`}
+  description={'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text'}
   actionLabel="Action"
   cancelLabel="Cancel"
 />
@@ -176,7 +172,7 @@ https://www.radix-ui.com/primitives/docs/components/dialog
   trigger={<button>Open Dialog</button>}
   closeButton={true}
   title={'Title'}
-  description={`Lorem Ipsum is simply dummy text of the printing and typesetting industry.`}
+  description={'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'}
   cancelLabel="Cancel"
   actionLabel="Action"
   onCancel={() => alert('click cancel')}
@@ -257,7 +253,6 @@ https://www.radix-ui.com/primitives/docs/components/radio-group
 https://www.radix-ui.com/primitives/docs/components/scroll-area
 
 ```tsx
-// height 지정해줘야 함
 <ScrollArea style={{ height: "100px", width: "200px" }}>
   <div style={{ width: "100%", height: "1000px", background: "black" }}>
     Whatever Contents You Want
@@ -355,22 +350,17 @@ https://www.radix-ui.com/primitives/docs/components/toast
 ```tsx
 export default function App() {
   const { toast } = useToast();
+
   const handleToastButtonClick = () => {
     toast({
-      text: "Title only",
+      text: 'Title only',
       duration: 3000,
       close: true,
-      // state: error, success(default), info
-      state: "error",
-    });
-    toast({
-      text: "text",
+      state: 'error',
       action: <ToastAction altText="hi">hi</ToastAction>,
     });
   };
 
-  // Toaster 는 Toast의 Provider를 갖고 있습니다.
-  // 앱 최상단에서 사용해주시면 됩니다.
   return (
     <>
       <button onClick={handleToastButtonClick}>
@@ -416,12 +406,17 @@ https://www.radix-ui.com/primitives/docs/components/tooltip
 </TooltipProvider>
 ```
 
+---
 
 ## 문의사항
 
 버그 신고 및 개선 제안은 이슈(issue)에 남겨주시고, PR(Pull Request)도 환영합니다.
 
+---
+
 ## 라이선스
 
 이 프로젝트는 MIT 라이선스를 따릅니다.  
 자세한 내용은 LICENSE 파일을 참고하세요.
+
+---
