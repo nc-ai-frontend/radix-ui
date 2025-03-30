@@ -1,6 +1,6 @@
 {
   "name": "nc-ai-frontend-radix-ui",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "exports": {
     ".": {
@@ -57,5 +57,16 @@
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nc-ai-frontend/radix-ui.git"
+  },
+  "keywords": [
+    "nc-ai",
+    "react",
+    "radix-ui"
+  ],
+  "homepage": "https://nc-ai.com/ko",
+  "license": "MIT"
 }
